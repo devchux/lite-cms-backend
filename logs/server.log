@@ -1,0 +1,232 @@
+info: Nov-27-2021 23:42:48: 	
+info: Nov-27-2021 23:43:38: 	
+info: Nov-27-2021 23:44:03: 	Connection has been established successfully
+info: Nov-27-2021 23:44:06: 	Connection has been established successfully
+info: Nov-27-2021 23:44:34: 	Connection has been established successfully
+info: Nov-27-2021 23:44:49: 	Connection has been established successfully
+info: Nov-27-2021 23:45:19: 	Connection has been established successfully
+info: Nov-27-2021 23:48:42: 	Connection has been established successfully
+info: Nov-27-2021 23:50:02: 	Connection has been established successfully
+info: Nov-27-2021 23:50:18: 	Connection has been established successfully
+info: Nov-27-2021 23:50:26: 	Connection has been established successfully
+info: Nov-27-2021 23:50:57: 	Connection has been established successfully
+info: Nov-27-2021 23:52:21: 	Connection has been established successfully
+info: Nov-27-2021 23:54:40: 	Connection has been established successfully
+info: Nov-28-2021 00:05:21: 	Connection has been established successfully
+error: Nov-29-2021 10:45:51: 	Unable to connect to the database: db.authenticate is not a function
+error: Nov-29-2021 10:46:41: 	Unable to connect to the database: db.authenticate is not a function
+error: Nov-29-2021 10:47:29: 	Unable to connect to the database: db.authenticate is not a function
+info: Nov-29-2021 10:50:37: 	Connection has been established successfully
+info: Nov-29-2021 10:58:08: 	Connection has been established successfully
+info: Nov-29-2021 10:58:17: 	Connection has been established successfully
+info: Nov-29-2021 10:59:06: 	Connection has been established successfully
+info: Nov-29-2021 10:59:11: 	Connection has been established successfully
+info: Nov-29-2021 10:59:59: 	Connection has been established successfully
+info: Nov-29-2021 11:01:18: 	Connection has been established successfully
+info: Nov-29-2021 11:03:16: 	Connection has been established successfully
+info: Nov-29-2021 11:03:32: 	Connection has been established successfully
+info: Nov-29-2021 11:03:35: 	Connection has been established successfully
+info: Nov-29-2021 11:06:34: 	Connection has been established successfully
+info: Nov-29-2021 11:09:35: 	Connection has been established successfully
+info: Nov-29-2021 11:09:41: 	Connection has been established successfully
+info: Nov-29-2021 11:12:31: 	Connection has been established successfully
+info: Nov-29-2021 11:12:46: 	Connection has been established successfully
+info: Nov-29-2021 11:14:10: 	Connection has been established successfully
+error: Nov-29-2021 11:14:21: 	Unable to connect to the database: db.authenticate is not a function
+info: Nov-29-2021 11:14:46: 	Connection has been established successfully
+info: Nov-29-2021 11:16:49: 	Connection has been established successfully
+info: Nov-29-2021 11:16:56: 	Connection has been established successfully
+info: Nov-29-2021 11:17:31: 	Connection has been established successfully
+info: Nov-29-2021 11:17:42: 	Connection has been established successfully
+info: Nov-29-2021 11:17:55: 	Connection has been established successfully
+info: Nov-29-2021 11:18:08: 	Connection has been established successfully
+info: Nov-29-2021 11:25:15: 	Connection has been established successfully
+info: Nov-29-2021 11:27:20: 	Connection has been established successfully
+info: Nov-29-2021 11:27:54: 	Connection has been established successfully
+info: Nov-29-2021 11:28:24: 	Connection has been established successfully
+info: Nov-29-2021 11:28:44: 	Connection has been established successfully
+info: Nov-29-2021 11:29:23: 	Connection has been established successfully
+info: Nov-29-2021 11:29:29: 	Connection has been established successfully
+info: Nov-29-2021 11:29:48: 	Connection has been established successfully
+info: Nov-29-2021 11:29:57: 	Connection has been established successfully
+info: Nov-29-2021 11:30:07: 	Connection has been established successfully
+info: Nov-29-2021 11:32:14: 	Connection has been established successfully
+info: Nov-29-2021 11:33:01: 	Connection has been established successfully
+info: Nov-29-2021 11:33:24: 	Connection has been established successfully
+error: Nov-29-2021 11:33:24: 	
+info: Nov-29-2021 11:33:42: 	Connection has been established successfully
+error: Nov-29-2021 11:33:42: 	Database wi
+info: Nov-29-2021 11:33:51: 	Connection has been established successfully
+error: Nov-29-2021 11:33:51: 	Database could not be synced
+info: Nov-29-2021 11:34:10: 	Connection has been established successfully
+error: Nov-29-2021 11:34:10: 	Database could not be synchronized
+info: Nov-29-2021 11:34:27: 	Connection has been established successfully
+error: Nov-29-2021 11:34:27: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:34:30: 	Connection has been established successfully
+error: Nov-29-2021 11:34:30: 	Database could not be synchronized: No database selected
+error: Nov-29-2021 11:37:18: 	Unable to connect to the database: Cannot read property 'authenticate' of undefined
+error: Nov-29-2021 11:37:38: 	Unable to connect to the database: Cannot read property 'authenticate' of undefined
+error: Nov-29-2021 11:37:42: 	Unable to connect to the database: Cannot read property 'authenticate' of undefined
+error: Nov-29-2021 11:38:01: 	Unable to connect to the database: sequelize is not defined
+info: Nov-29-2021 11:38:08: 	Connection has been established successfully
+info: Nov-29-2021 11:38:56: 	Connection has been established successfully
+info: Nov-29-2021 11:39:03: 	Connection has been established successfully
+info: Nov-29-2021 11:39:17: 	Connection has been established successfully
+info: Nov-29-2021 11:39:26: 	Connection has been established successfully
+info: Nov-29-2021 11:39:30: 	Connection has been established successfully
+error: Nov-29-2021 11:40:06: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:40:06: 	Connection has been established successfully
+info: Nov-29-2021 11:41:55: 	Connection has been established successfully
+info: Nov-29-2021 11:44:20: 	Connection has been established successfully
+error: Nov-29-2021 11:44:20: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:44:59: 	Connection has been established successfully
+error: Nov-29-2021 11:44:59: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:49:41: 	Connection has been established successfully
+error: Nov-29-2021 11:49:42: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:50:03: 	Connection has been established successfully
+error: Nov-29-2021 11:50:03: 	Database could not be synchronized: No database selected
+error: Nov-29-2021 11:50:11: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:50:11: 	Connection has been established successfully
+info: Nov-29-2021 11:51:01: 	Connection has been established successfully
+error: Nov-29-2021 11:51:01: 	Database could not be synchronized: No database selected
+info: Nov-29-2021 11:51:19: 	Connection has been established successfully
+info: Nov-29-2021 11:52:38: 	Connection has been established successfully
+info: Nov-29-2021 11:55:16: 	Connection has been established successfully
+info: Nov-29-2021 11:55:46: 	Connection has been established successfully
+info: Nov-29-2021 11:55:49: 	Connection has been established successfully
+info: Nov-29-2021 11:56:03: 	Connection has been established successfully
+info: Nov-29-2021 11:56:15: 	Connection has been established successfully
+info: Nov-29-2021 11:56:30: 	Connection has been established successfully
+info: Nov-29-2021 11:56:34: 	Connection has been established successfully
+error: Nov-29-2021 12:01:25: 	Unable to connect to the database: getaddrinfo ENOTFOUND mysql
+error: Nov-29-2021 12:01:25: 	Database could not be synchronized: getaddrinfo ENOTFOUND mysql
+info: Nov-29-2021 12:04:17: 	Connection has been established successfully
+info: Nov-29-2021 12:04:53: 	Connection has been established successfully
+info: Nov-29-2021 12:23:59: 	Connection has been established successfully
+info: Nov-29-2021 12:24:52: 	Connection has been established successfully
+info: Nov-29-2021 12:25:02: 	Connection has been established successfully
+info: Nov-29-2021 12:25:12: 	Connection has been established successfully
+info: Nov-29-2021 12:25:29: 	Connection has been established successfully
+info: Nov-29-2021 12:26:42: 	Connection has been established successfully
+info: Nov-29-2021 12:27:04: 	Connection has been established successfully
+info: Nov-29-2021 12:27:29: 	Connection has been established successfully
+info: Nov-29-2021 12:27:44: 	Connection has been established successfully
+info: Nov-29-2021 12:35:05: 	Connection has been established successfully
+info: Nov-29-2021 12:35:56: 	Connection has been established successfully
+info: Nov-29-2021 12:36:19: 	Connection has been established successfully
+info: Nov-29-2021 12:36:34: 	Connection has been established successfully
+info: Nov-29-2021 12:36:47: 	Connection has been established successfully
+info: Nov-29-2021 12:37:00: 	Connection has been established successfully
+info: Nov-29-2021 12:37:29: 	Connection has been established successfully
+info: Nov-29-2021 12:39:04: 	Connection has been established successfully
+info: Nov-29-2021 12:39:26: 	Connection has been established successfully
+info: Nov-29-2021 12:39:38: 	Connection has been established successfully
+info: Nov-29-2021 12:40:45: 	Connection has been established successfully
+info: Nov-29-2021 12:40:51: 	Connection has been established successfully
+info: Nov-29-2021 12:41:04: 	Connection has been established successfully
+info: Nov-29-2021 12:42:22: 	Connection has been established successfully
+info: Nov-29-2021 12:42:42: 	Connection has been established successfully
+info: Nov-29-2021 12:43:40: 	Volunteers have been fetched successfully
+info: Nov-29-2021 12:45:07: 	Connection has been established successfully
+info: Nov-29-2021 12:45:26: 	Connection has been established successfully
+info: Nov-29-2021 12:45:55: 	Connection has been established successfully
+info: Nov-29-2021 12:46:09: 	Connection has been established successfully
+info: Nov-29-2021 12:46:25: 	Connection has been established successfully
+info: Nov-29-2021 12:46:32: 	Connection has been established successfully
+info: Nov-29-2021 12:47:54: 	Connection has been established successfully
+info: Nov-29-2021 12:48:36: 	Connection has been established successfully
+info: Nov-29-2021 12:48:44: 	Connection has been established successfully
+info: Nov-29-2021 12:49:43: 	Connection has been established successfully
+info: Nov-29-2021 12:52:51: 	Connection has been established successfully
+info: Nov-29-2021 12:53:27: 	Connection has been established successfully
+info: Nov-29-2021 12:57:27: 	Connection has been established successfully
+info: Nov-29-2021 12:58:11: 	Connection has been established successfully
+info: Nov-29-2021 12:58:22: 	Connection has been established successfully
+info: Nov-29-2021 12:58:56: 	Connection has been established successfully
+info: Nov-29-2021 13:00:06: 	Connection has been established successfully
+info: Nov-29-2021 13:00:16: 	Connection has been established successfully
+info: Nov-29-2021 13:00:36: 	Connection has been established successfully
+info: Nov-29-2021 13:01:00: 	Connection has been established successfully
+info: Nov-29-2021 13:01:04: 	Connection has been established successfully
+info: Nov-29-2021 13:01:27: 	Connection has been established successfully
+info: Nov-29-2021 13:02:38: 	Connection has been established successfully
+info: Nov-29-2021 13:02:57: 	Connection has been established successfully
+info: Nov-29-2021 13:03:02: 	Connection has been established successfully
+info: Nov-29-2021 13:03:31: 	Connection has been established successfully
+info: Nov-29-2021 13:05:29: 	Volunteers have been fetched successfully
+info: Nov-29-2021 13:18:22: 	Connection has been established successfully
+info: Nov-29-2021 13:18:26: 	Connection has been established successfully
+info: Nov-29-2021 13:52:53: 	Connection has been established successfully
+info: Nov-29-2021 13:57:45: 	Connection has been established successfully
+info: Nov-29-2021 13:58:07: 	Connection has been established successfully
+info: Nov-29-2021 13:58:18: 	Connection has been established successfully
+info: Nov-29-2021 13:59:01: 	Connection has been established successfully
+info: Nov-29-2021 13:59:22: 	Connection has been established successfully
+info: Nov-29-2021 14:00:51: 	Connection has been established successfully
+info: Nov-29-2021 14:01:11: 	Connection has been established successfully
+info: Nov-29-2021 14:01:32: 	Connection has been established successfully
+info: Nov-29-2021 14:02:01: 	Connection has been established successfully
+info: Nov-29-2021 14:02:18: 	Connection has been established successfully
+info: Nov-29-2021 14:03:21: 	Connection has been established successfully
+info: Nov-29-2021 14:04:00: 	Connection has been established successfully
+info: Nov-29-2021 14:04:06: 	Connection has been established successfully
+info: Nov-29-2021 14:04:21: 	Connection has been established successfully
+info: Nov-29-2021 14:04:28: 	Connection has been established successfully
+info: Nov-29-2021 14:13:43: 	Connection has been established successfully
+info: Nov-29-2021 14:14:00: 	Connection has been established successfully
+info: Nov-29-2021 14:15:24: 	Connection has been established successfully
+info: Nov-29-2021 14:16:22: 	Connection has been established successfully
+info: Nov-29-2021 14:16:31: 	Connection has been established successfully
+info: Nov-29-2021 14:16:38: 	Connection has been established successfully
+info: Nov-29-2021 14:16:47: 	Connection has been established successfully
+info: Nov-29-2021 14:17:45: 	Connection has been established successfully
+info: Nov-29-2021 14:18:08: 	Connection has been established successfully
+info: Nov-29-2021 14:18:21: 	Connection has been established successfully
+info: Nov-29-2021 14:18:24: 	Connection has been established successfully
+info: Nov-29-2021 14:19:02: 	Connection has been established successfully
+info: Nov-29-2021 14:19:18: 	Connection has been established successfully
+info: Nov-29-2021 14:19:31: 	Connection has been established successfully
+info: Nov-29-2021 14:19:56: 	Connection has been established successfully
+info: Nov-29-2021 14:20:14: 	Connection has been established successfully
+info: Nov-29-2021 14:20:56: 	Connection has been established successfully
+info: Nov-29-2021 14:21:28: 	Volunteer Chukwudi Eze has been created
+error: Nov-29-2021 14:23:58: 	Volunteer 0f8dfcdd-6ec1-4c4a-a2fc-f322caa02cfb could not be updated: Missing where attribute in the options parameter
+info: Nov-29-2021 14:29:52: 	Connection has been established successfully
+error: Nov-29-2021 14:30:01: 	Volunteer 0f8dfcdd-6ec1-4c4a-a2fc-f322caa02cfb could not be updated: Missing where attribute in the options parameter
+info: Nov-29-2021 14:30:52: 	Connection has been established successfully
+info: Nov-29-2021 14:31:00: 	Volunteer 0f8dfcdd-6ec1-4c4a-a2fc-f322caa02cfb has been updated
+info: Nov-29-2021 14:32:44: 	Volunteers have been fetched successfully
+info: Nov-29-2021 14:40:44: 	Connection has been established successfully
+info: Nov-29-2021 14:40:48: 	Connection has been established successfully
+info: Nov-29-2021 14:50:04: 	Connection has been established successfully
+info: Nov-29-2021 14:50:12: 	Connection has been established successfully
+info: Nov-29-2021 14:50:20: 	Connection has been established successfully
+info: Nov-29-2021 14:51:23: 	Connection has been established successfully
+info: Nov-29-2021 15:05:12: 	Connection has been established successfully
+info: Nov-29-2021 15:05:22: 	Connection has been established successfully
+info: Nov-29-2021 15:05:46: 	Connection has been established successfully
+info: Nov-29-2021 15:06:04: 	Connection has been established successfully
+info: Nov-29-2021 15:12:59: 	Connection has been established successfully
+info: Nov-29-2021 15:13:07: 	Connection has been established successfully
+info: Nov-29-2021 15:13:53: 	Connection has been established successfully
+info: Nov-29-2021 15:13:56: 	Connection has been established successfully
+info: Nov-29-2021 15:14:37: 	Connection has been established successfully
+info: Nov-29-2021 15:14:55: 	Connection has been established successfully
+info: Nov-29-2021 15:15:02: 	Connection has been established successfully
+info: Nov-29-2021 15:15:14: 	Connection has been established successfully
+info: Nov-29-2021 15:15:17: 	Connection has been established successfully
+info: Nov-29-2021 15:15:26: 	Connection has been established successfully
+info: Nov-29-2021 15:15:36: 	Connection has been established successfully
+info: Nov-29-2021 15:15:51: 	Connection has been established successfully
+info: Nov-29-2021 15:16:25: 	Connection has been established successfully
+info: Nov-29-2021 15:16:42: 	Connection has been established successfully
+info: Nov-29-2021 15:17:01: 	Connection has been established successfully
+info: Nov-29-2021 15:17:10: 	Connection has been established successfully
+info: Nov-29-2021 15:17:21: 	Connection has been established successfully
+info: Nov-29-2021 15:17:30: 	Connection has been established successfully
+info: Nov-29-2021 15:17:45: 	Connection has been established successfully
+info: Nov-29-2021 15:17:55: 	Connection has been established successfully
+info: Nov-29-2021 15:18:04: 	Connection has been established successfully
+info: Nov-29-2021 15:18:09: 	Connection has been established successfully
+info: Nov-29-2021 15:18:26: 	Connection has been established successfully
+info: Nov-29-2021 15:18:47: 	Connection has been established successfully
