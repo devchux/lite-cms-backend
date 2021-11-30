@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes } = require("sequelize/dist");
-const db = require("../config/db");
-const sequelize = db();
+const { DataTypes } = require("sequelize/dist");
+const sequelize = require("../config/db");
 
 const UserSchema = {
   id: {
@@ -18,8 +17,14 @@ const UserSchema = {
     unique: true,
     validate: {
       is: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
+      isEmail: true,
     },
   },
+  phoneNumber: {
+    type: DataTypes.STRING,
+    allowNull: true,
+    unique: true,
+  }
 };
 
 const User = sequelize.define("User", UserSchema, { timestamps: true });

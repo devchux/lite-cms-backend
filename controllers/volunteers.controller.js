@@ -3,6 +3,13 @@ const logger = require("../utils/logger");
 
 exports.createVolunteers = async (req, res) => {
   const { name, email, message } = req.body;
+  const volunteer = await Volunteer.findOne({ where: { email } });
+  if (volunteer) {
+    logger.error(`(createVolunteers) Volunteer already exist: ${volunteer.id}`);
+    return res
+      .status(403)
+      .json({ status: "failed", messsage: "You are already a volunteer" });
+  }
   try {
     const newVolunteer = await Volunteer.create({ name, email, message });
     logger.info(`Volunteer ${newVolunteer.name} has been created`);
@@ -13,7 +20,9 @@ exports.createVolunteers = async (req, res) => {
       status: "success",
     });
   } catch (error) {
-    logger.error(`Volunteer was not registered: ${error.message}`);
+    logger.error(
+      `(createVolunteers) Volunteer was not registered: ${error.message}`
+    );
     return res.status(500).json({
       message: "An error occured",
       status: "failed",
@@ -26,13 +35,15 @@ exports.getAllVolunteers = async (req, res) => {
     const volunteers = await Volunteer.findAll();
     logger.info("Volunteers have been fetched successfully");
 
-    return res.status(201).json({
+    return res.status(200).json({
       volunteers,
       message: "Here are the list of volunteers",
       status: "success",
     });
   } catch (error) {
-    logger.error(`List of volunteers could not be fetched: ${error.message}`);
+    logger.error(
+      `(getAllVolunteers) List of volunteers could not be fetched: ${error.message}`
+    );
     return res.status(500).json({
       message: "An error occured",
       status: "failed",
@@ -47,13 +58,15 @@ exports.deleteVolunteer = async (req, res) => {
     },
   })
     .then(() =>
-      res.status(201).json({
+      res.status(200).json({
         status: "success",
         message: "Volunteer has been deleted",
       })
     )
     .catch((error) => {
-      logger.error(`Volunteer could not be deleted: ${error.message}`);
+      logger.error(
+        `(deleteVolunteer) Volunteer could not be deleted: ${error.message}`
+      );
       return res.status(500).json({
         message: "Volunteer was not deleted",
         status: "failed",
@@ -77,14 +90,14 @@ exports.updateVolunteer = async (req, res) => {
     });
     logger.info(`Volunteer ${updatedVolunteer.id} has been updated`);
 
-    return res.status(201).json({
+    return res.status(200).json({
       volunteer: updatedVolunteer,
       message: "Volunteer has been updated",
       status: "success",
     });
   } catch (error) {
     logger.error(
-      `Volunteer ${volunteer.id} could not be updated: ${error.message}`
+      `(updateVolunteer) Volunteer ${volunteer.id} could not be updated: ${error.message}`
     );
     return res.status(500).json({
       message: "Volunteer was not updated",

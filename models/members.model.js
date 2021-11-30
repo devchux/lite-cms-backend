@@ -1,7 +1,6 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/db');
-const User = require('./users.model');
-
+const { DataTypes } = require("sequelize");
+const sequelize = require("../config/db");
+const User = require("./users.model");
 
 const MemberSchema = {
   id: {
@@ -11,17 +10,19 @@ const MemberSchema = {
   },
   role: {
     type: DataTypes.STRING,
-    defaultValue: 'member',
+    defaultValue: "member",
   },
   password: {
     type: DataTypes.STRING,
     allowNull: false,
-  }
-}
+  },
+};
 
-const Member = sequelize.define('Member', MemberSchema, { timestamps: true });
+const Member = sequelize.define("Member", MemberSchema, { timestamps: true });
 
-User.hasOne(Member)
-Member.belongsTo(User)
+User.hasOne(Member, {
+  onDelete: "CASCADE",
+});
+Member.belongsTo(User);
 
-module.exports = Member
+module.exports = Member;
