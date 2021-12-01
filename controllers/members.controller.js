@@ -1,5 +1,4 @@
 const Member = require("../models/members.model");
-const { update } = require("../models/users.model");
 const User = require("../models/users.model");
 const logger = require("../utils/logger");
 
@@ -57,7 +56,7 @@ exports.createMembers = async (req, res) => {
 
 exports.getAllMembers = async (req, res) => {
   try {
-    const users = await User.findAll({ include: Member });
+    const users = await Member.findAll({ include: User });
 
     return res.status(200).json({
       status: "success",

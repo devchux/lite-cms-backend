@@ -1,23 +1,12 @@
 const { DataTypes } = require("sequelize/dist");
 const sequelize = require("../config/db");
+const User = require("./users.model");
 
 const VolunteerSchema = {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false,
-  },
-  email: {
-    type: DataTypes.STRING,
-    allowNull: false,
-    unique: true,
-    validate: {
-      is: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
-    },
   },
   message: {
     type: DataTypes.TEXT,
@@ -28,5 +17,10 @@ const VolunteerSchema = {
 const Volunteer = sequelize.define("Volunteer", VolunteerSchema, {
   timestamps: true,
 });
+
+User.hasOne(Volunteer, {
+  onDelete: "CASCADE",
+});
+Volunteer.belongsTo(User);
 
 module.exports = Volunteer;
