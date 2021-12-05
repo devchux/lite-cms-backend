@@ -7,4 +7,5 @@ module.exports = {
   dbUsername: process.env.DB_USERNAME,
   dbDialect: process.env.DB_DIALECT,
   dbHost: process.env.DB_HOST,
+  jwtToken: process.env.JWT_TOKEN,
 };

@@ -18,7 +18,7 @@ const Volunteer = sequelize.define("Volunteer", VolunteerSchema, {
   timestamps: true,
 });
 
-User.hasOne(Volunteer, {
+User.hasMany(Volunteer, {
   onDelete: "CASCADE",
 });
 Volunteer.belongsTo(User);

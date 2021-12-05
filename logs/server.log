@@ -481,3 +481,247 @@ info: Dec-01-2021 11:44:12: 	Connection has been established successfully
 info: Dec-01-2021 11:45:42: 	Connection has been established successfully
 info: Dec-01-2021 11:46:04: 	Volunteer 64c33460-e416-4c5c-8256-f93ec3029c3f has been created
 info: Dec-01-2021 11:47:23: 	Connection has been established successfully
+info: Dec-01-2021 18:58:58: 	Connection has been established successfully
+info: Dec-01-2021 19:00:11: 	Connection has been established successfully
+info: Dec-01-2021 19:00:32: 	Connection has been established successfully
+info: Dec-01-2021 19:00:47: 	Connection has been established successfully
+info: Dec-01-2021 19:01:02: 	Connection has been established successfully
+info: Dec-01-2021 19:01:23: 	Connection has been established successfully
+info: Dec-01-2021 19:01:38: 	Connection has been established successfully
+info: Dec-01-2021 19:01:44: 	Connection has been established successfully
+info: Dec-01-2021 19:06:55: 	Connection has been established successfully
+info: Dec-01-2021 19:07:13: 	Connection has been established successfully
+info: Dec-01-2021 19:07:34: 	Connection has been established successfully
+info: Dec-01-2021 19:07:50: 	Connection has been established successfully
+info: Dec-01-2021 19:08:17: 	Connection has been established successfully
+info: Dec-01-2021 19:08:30: 	Connection has been established successfully
+info: Dec-01-2021 19:09:11: 	Connection has been established successfully
+info: Dec-01-2021 19:09:52: 	Connection has been established successfully
+info: Dec-01-2021 19:11:05: 	Connection has been established successfully
+info: Dec-01-2021 19:11:57: 	Connection has been established successfully
+info: Dec-01-2021 19:14:00: 	Connection has been established successfully
+info: Dec-01-2021 19:14:26: 	Connection has been established successfully
+info: Dec-01-2021 19:14:29: 	Connection has been established successfully
+info: Dec-01-2021 19:14:52: 	Connection has been established successfully
+info: Dec-01-2021 19:14:56: 	Connection has been established successfully
+info: Dec-01-2021 19:15:38: 	Connection has been established successfully
+info: Dec-01-2021 19:15:53: 	Connection has been established successfully
+info: Dec-01-2021 19:15:56: 	Connection has been established successfully
+info: Dec-01-2021 19:16:03: 	Connection has been established successfully
+info: Dec-01-2021 19:16:19: 	Connection has been established successfully
+info: Dec-01-2021 19:16:43: 	Connection has been established successfully
+info: Dec-01-2021 19:17:17: 	Connection has been established successfully
+info: Dec-01-2021 19:17:50: 	Connection has been established successfully
+info: Dec-01-2021 19:17:57: 	Connection has been established successfully
+info: Dec-01-2021 19:20:16: 	Connection has been established successfully
+error: Dec-01-2021 19:22:00: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 19:25:12: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 19:26:21: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 19:26:36: 	(getAllVolunteers) List of volunteers could not be fetched: Unknown column 'Volunteer.name' in 'field list'
+error: Dec-01-2021 19:27:49: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:29:17: 	Connection has been established successfully
+error: Dec-01-2021 19:29:44: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 19:31:31: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:31:45: 	Connection has been established successfully
+info: Dec-01-2021 19:32:31: 	Connection has been established successfully
+error: Dec-01-2021 19:32:37: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 19:32:41: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:33:19: 	Connection has been established successfully
+info: Dec-01-2021 19:34:21: 	Connection has been established successfully
+error: Dec-01-2021 19:34:30: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:36:54: 	Connection has been established successfully
+error: Dec-01-2021 19:37:07: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:39:25: 	Connection has been established successfully
+error: Dec-01-2021 19:39:41: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 19:41:57: 	Connection has been established successfully
+error: Dec-01-2021 19:42:39: 	(createVolunteers) User could not be created: Table 'uto_foundation.users' doesn't exist
+error: Dec-01-2021 19:45:14: 	(createMembers) User could not be searched for: Table 'uto_foundation.users' doesn't exist
+info: Dec-01-2021 19:46:14: 	Connection has been established successfully
+info: Dec-01-2021 19:48:06: 	Volunteer 6c88b0d3-613d-409e-8403-7d19f9fc7027 has been created
+info: Dec-01-2021 19:48:20: 	Volunteers have been fetched successfully
+info: Dec-01-2021 19:49:21: 	Connection has been established successfully
+info: Dec-01-2021 19:49:24: 	Connection has been established successfully
+error: Dec-01-2021 19:49:42: 	(getAllVolunteers) List of volunteers could not be fetched: Unknown column 'Volunteer.name' in 'field list'
+info: Dec-01-2021 19:50:02: 	Connection has been established successfully
+info: Dec-01-2021 19:51:00: 	Connection has been established successfully
+error: Dec-01-2021 19:51:08: 	(getAllVolunteers) List of volunteers could not be fetched: Unknown column 'User.name' in 'field list'
+info: Dec-01-2021 21:37:31: 	Connection has been established successfully
+info: Dec-01-2021 21:41:33: 	Connection has been established successfully
+info: Dec-01-2021 21:41:46: 	Volunteers have been fetched successfully
+info: Dec-01-2021 21:42:58: 	Connection has been established successfully
+error: Dec-01-2021 21:43:38: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 21:44:20: 	Connection has been established successfully
+info: Dec-01-2021 21:44:51: 	Connection has been established successfully
+error: Dec-01-2021 21:45:16: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 21:45:42: 	Connection has been established successfully
+error: Dec-01-2021 21:45:50: 	(createVolunteers) User could not be created: Validation error
+info: Dec-01-2021 21:46:09: 	Connection has been established successfully
+error: Dec-01-2021 21:46:29: 	(createVolunteers) User could not be created: Validation error
+error: Dec-01-2021 21:47:43: 	(createVolunteers) User could not be created: Table 'uto_foundation.users' doesn't exist
+info: Dec-01-2021 21:48:10: 	Connection has been established successfully
+info: Dec-01-2021 21:48:19: 	Volunteer 79af78d2-8542-49fe-89f2-44ae931b12c2 has been created
+info: Dec-01-2021 21:49:07: 	Connection has been established successfully
+error: Dec-01-2021 21:49:08: 	Database could not be synchronized: Can't create table `uto_foundation`.`volunteers` (errno: 150 "Foreign key constraint is incorrectly formed")
+info: Dec-01-2021 21:49:27: 	Connection has been established successfully
+error: Dec-01-2021 21:49:27: 	Database could not be synchronized: Can't create table `uto_foundation`.`volunteers` (errno: 150 "Foreign key constraint is incorrectly formed")
+info: Dec-01-2021 21:50:22: 	Connection has been established successfully
+info: Dec-04-2021 12:13:54: 	Connection has been established successfully
+info: Dec-04-2021 12:14:03: 	Volunteer eb45bfd0-ee93-4864-ae4e-16f9566df53d has been created
+info: Dec-04-2021 12:14:24: 	Volunteers have been fetched successfully
+error: Dec-04-2021 12:15:46: 	(createVolunteers) User could not be created: Validation error
+info: Dec-04-2021 12:18:14: 	Connection has been established successfully
+info: Dec-04-2021 12:18:51: 	Connection has been established successfully
+info: Dec-04-2021 12:19:13: 	Connection has been established successfully
+info: Dec-04-2021 12:19:35: 	Connection has been established successfully
+info: Dec-04-2021 12:19:50: 	Connection has been established successfully
+info: Dec-04-2021 12:20:40: 	Connection has been established successfully
+info: Dec-04-2021 12:25:06: 	Connection has been established successfully
+info: Dec-04-2021 12:25:25: 	Connection has been established successfully
+info: Dec-04-2021 12:29:49: 	Connection has been established successfully
+info: Dec-04-2021 12:29:57: 	Connection has been established successfully
+info: Dec-04-2021 12:30:06: 	Connection has been established successfully
+info: Dec-04-2021 12:30:53: 	Connection has been established successfully
+info: Dec-04-2021 12:31:36: 	Connection has been established successfully
+info: Dec-04-2021 12:32:05: 	Connection has been established successfully
+info: Dec-04-2021 12:32:26: 	Connection has been established successfully
+info: Dec-04-2021 12:32:57: 	Connection has been established successfully
+info: Dec-04-2021 12:50:08: 	Connection has been established successfully
+info: Dec-04-2021 12:50:51: 	Connection has been established successfully
+info: Dec-04-2021 12:51:10: 	Connection has been established successfully
+info: Dec-04-2021 12:51:35: 	Connection has been established successfully
+info: Dec-04-2021 12:52:22: 	Connection has been established successfully
+info: Dec-04-2021 12:52:46: 	Connection has been established successfully
+info: Dec-04-2021 12:53:05: 	Connection has been established successfully
+info: Dec-04-2021 12:53:37: 	Connection has been established successfully
+info: Dec-04-2021 12:54:15: 	Connection has been established successfully
+info: Dec-04-2021 12:54:30: 	Connection has been established successfully
+info: Dec-04-2021 12:54:45: 	Connection has been established successfully
+info: Dec-04-2021 12:54:55: 	Connection has been established successfully
+info: Dec-04-2021 12:55:13: 	Connection has been established successfully
+info: Dec-04-2021 12:55:25: 	Connection has been established successfully
+info: Dec-04-2021 12:55:57: 	Connection has been established successfully
+info: Dec-04-2021 12:57:51: 	Connection has been established successfully
+info: Dec-04-2021 12:58:01: 	Connection has been established successfully
+info: Dec-04-2021 12:58:57: 	Connection has been established successfully
+info: Dec-04-2021 13:00:08: 	Connection has been established successfully
+info: Dec-04-2021 13:00:18: 	Connection has been established successfully
+info: Dec-04-2021 13:00:56: 	Connection has been established successfully
+info: Dec-04-2021 13:02:02: 	Connection has been established successfully
+info: Dec-04-2021 13:02:16: 	Connection has been established successfully
+info: Dec-04-2021 13:03:15: 	Connection has been established successfully
+info: Dec-04-2021 13:04:48: 	Connection has been established successfully
+info: Dec-04-2021 13:06:21: 	Connection has been established successfully
+info: Dec-04-2021 13:06:39: 	Connection has been established successfully
+info: Dec-04-2021 13:07:15: 	Connection has been established successfully
+info: Dec-04-2021 13:07:28: 	Connection has been established successfully
+info: Dec-04-2021 13:07:52: 	Connection has been established successfully
+info: Dec-04-2021 13:08:31: 	Connection has been established successfully
+info: Dec-04-2021 13:08:58: 	Connection has been established successfully
+info: Dec-04-2021 13:09:17: 	Connection has been established successfully
+info: Dec-04-2021 13:10:26: 	Connection has been established successfully
+info: Dec-04-2021 13:10:51: 	Connection has been established successfully
+info: Dec-04-2021 13:11:00: 	Connection has been established successfully
+info: Dec-04-2021 13:19:44: 	Connection has been established successfully
+info: Dec-04-2021 14:03:08: 	Connection has been established successfully
+info: Dec-04-2021 14:03:33: 	Connection has been established successfully
+info: Dec-04-2021 14:03:57: 	Connection has been established successfully
+info: Dec-04-2021 14:04:40: 	Connection has been established successfully
+info: Dec-04-2021 14:05:08: 	Connection has been established successfully
+info: Dec-04-2021 14:05:37: 	Connection has been established successfully
+info: Dec-04-2021 14:06:03: 	Connection has been established successfully
+info: Dec-04-2021 14:07:10: 	Connection has been established successfully
+info: Dec-04-2021 14:07:18: 	Connection has been established successfully
+info: Dec-04-2021 14:07:45: 	Connection has been established successfully
+info: Dec-04-2021 14:08:28: 	Connection has been established successfully
+error: Dec-05-2021 17:14:16: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Dec-05-2021 17:14:16: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+info: Dec-05-2021 17:19:24: 	Connection has been established successfully
+info: Dec-05-2021 17:40:32: 	Connection has been established successfully
+info: Dec-05-2021 17:59:04: 	Connection has been established successfully
+info: Dec-05-2021 17:59:43: 	Connection has been established successfully
+info: Dec-05-2021 18:00:13: 	Connection has been established successfully
+info: Dec-05-2021 18:00:19: 	Connection has been established successfully
+info: Dec-05-2021 18:00:31: 	Connection has been established successfully
+info: Dec-05-2021 18:00:57: 	Connection has been established successfully
+info: Dec-05-2021 18:01:21: 	Connection has been established successfully
+info: Dec-05-2021 18:02:36: 	Connection has been established successfully
+info: Dec-05-2021 18:36:31: 	Connection has been established successfully
+info: Dec-05-2021 18:37:28: 	Connection has been established successfully
+info: Dec-05-2021 18:37:44: 	Connection has been established successfully
+info: Dec-05-2021 18:38:03: 	Connection has been established successfully
+info: Dec-05-2021 18:39:21: 	Connection has been established successfully
+info: Dec-05-2021 18:39:46: 	Connection has been established successfully
+info: Dec-05-2021 18:40:50: 	Connection has been established successfully
+info: Dec-05-2021 18:42:00: 	Connection has been established successfully
+info: Dec-05-2021 18:42:17: 	Connection has been established successfully
+info: Dec-05-2021 18:43:31: 	Connection has been established successfully
+info: Dec-05-2021 18:43:43: 	Connection has been established successfully
+info: Dec-05-2021 18:45:01: 	Connection has been established successfully
+info: Dec-05-2021 18:45:59: 	Connection has been established successfully
+info: Dec-05-2021 18:46:36: 	Connection has been established successfully
+info: Dec-05-2021 18:48:40: 	Connection has been established successfully
+info: Dec-05-2021 18:48:47: 	Connection has been established successfully
+info: Dec-05-2021 18:49:23: 	Connection has been established successfully
+info: Dec-05-2021 18:49:31: 	Connection has been established successfully
+info: Dec-05-2021 18:49:48: 	Connection has been established successfully
+info: Dec-05-2021 18:50:36: 	Connection has been established successfully
+info: Dec-05-2021 18:50:55: 	Connection has been established successfully
+info: Dec-05-2021 18:51:14: 	Connection has been established successfully
+info: Dec-05-2021 18:52:25: 	Connection has been established successfully
+info: Dec-05-2021 18:53:13: 	Connection has been established successfully
+info: Dec-05-2021 18:53:26: 	Connection has been established successfully
+info: Dec-05-2021 18:54:21: 	Connection has been established successfully
+info: Dec-05-2021 18:54:38: 	Connection has been established successfully
+info: Dec-05-2021 18:54:53: 	Connection has been established successfully
+info: Dec-05-2021 18:56:48: 	Connection has been established successfully
+info: Dec-05-2021 18:58:24: 	Connection has been established successfully
+info: Dec-05-2021 19:00:11: 	Connection has been established successfully
+info: Dec-05-2021 19:01:34: 	Connection has been established successfully
+info: Dec-05-2021 19:02:13: 	Connection has been established successfully
+info: Dec-05-2021 19:02:43: 	Connection has been established successfully
+info: Dec-05-2021 19:03:18: 	Connection has been established successfully
+info: Dec-05-2021 19:04:24: 	Connection has been established successfully
+info: Dec-05-2021 19:04:32: 	Connection has been established successfully
+info: Dec-05-2021 19:04:50: 	Connection has been established successfully
+info: Dec-05-2021 19:04:58: 	Connection has been established successfully
+info: Dec-05-2021 19:05:10: 	Connection has been established successfully
+info: Dec-05-2021 19:07:54: 	Connection has been established successfully
+info: Dec-05-2021 19:08:06: 	Connection has been established successfully
+info: Dec-05-2021 19:08:14: 	Connection has been established successfully
+info: Dec-05-2021 19:08:28: 	Connection has been established successfully
+info: Dec-05-2021 19:12:38: 	Connection has been established successfully
+info: Dec-05-2021 19:13:36: 	Connection has been established successfully
+info: Dec-05-2021 19:21:33: 	Connection has been established successfully
+info: Dec-05-2021 19:22:35: 	Connection has been established successfully
+info: Dec-05-2021 19:23:05: 	Connection has been established successfully
+info: Dec-05-2021 19:23:21: 	Connection has been established successfully
+info: Dec-05-2021 19:24:39: 	Connection has been established successfully
+info: Dec-05-2021 19:27:28: 	Connection has been established successfully
+info: Dec-05-2021 19:27:32: 	Connection has been established successfully
+info: Dec-05-2021 19:27:43: 	Connection has been established successfully
+info: Dec-05-2021 19:28:00: 	Connection has been established successfully
+info: Dec-05-2021 19:28:07: 	Connection has been established successfully
+info: Dec-05-2021 19:29:08: 	Connection has been established successfully
+info: Dec-05-2021 19:29:21: 	Connection has been established successfully
+info: Dec-05-2021 19:29:40: 	Connection has been established successfully
+info: Dec-05-2021 19:29:47: 	Connection has been established successfully
+info: Dec-05-2021 19:30:08: 	Connection has been established successfully
+info: Dec-05-2021 19:30:20: 	Connection has been established successfully
+info: Dec-05-2021 19:30:30: 	Connection has been established successfully
+info: Dec-05-2021 19:31:03: 	Connection has been established successfully
+info: Dec-05-2021 19:31:14: 	Connection has been established successfully
+info: Dec-05-2021 19:31:29: 	Connection has been established successfully
+info: Dec-05-2021 19:31:47: 	Connection has been established successfully
+info: Dec-05-2021 19:32:07: 	Connection has been established successfully
+info: Dec-05-2021 19:32:16: 	Connection has been established successfully
+info: Dec-05-2021 19:33:05: 	Connection has been established successfully
+info: Dec-05-2021 19:33:10: 	Connection has been established successfully
+info: Dec-05-2021 19:33:30: 	Connection has been established successfully
+info: Dec-05-2021 19:33:46: 	Connection has been established successfully
+info: Dec-05-2021 19:34:04: 	Connection has been established successfully
+info: Dec-05-2021 19:34:22: 	Connection has been established successfully
+info: Dec-05-2021 19:35:35: 	Connection has been established successfully
+info: Dec-05-2021 19:37:22: 	Connection has been established successfully
+info: Dec-05-2021 19:37:29: 	Connection has been established successfully
+info: Dec-05-2021 19:39:23: 	Connection has been established successfully
+info: Dec-05-2021 19:39:45: 	Connection has been established successfully

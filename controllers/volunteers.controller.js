@@ -4,7 +4,20 @@ const logger = require("../utils/logger");
 
 exports.createVolunteers = async (req, res) => {
   const { name, email, phoneNumber, message } = req.body;
-  User.create({ name, phoneNumber, email })
+  const user = await User.findOne({
+    where: {
+      phoneNumber,
+    },
+  });
+  if (user) {
+    const newVolunteer = await Volunteer.create({ UserId: user.id, message });
+    return res.status(201).json({
+      volunter: newVolunteer,
+      message: "You are now a volunteer",
+      status: "success",
+    });
+  }
+  User.create({ name, phoneNumber: phoneNumber.toString(), email })
     .then(async ({ id }) => {
       try {
         const newVolunteer = await Volunteer.create({ UserId: id, message });
@@ -21,7 +34,7 @@ exports.createVolunteers = async (req, res) => {
         );
         return res.status(500).json({
           message: "An error occured",
-          status: "failed",
+          status: "error",
         });
       }
     })
@@ -30,16 +43,16 @@ exports.createVolunteers = async (req, res) => {
         `(createVolunteers) User could not be created: ${error.message}`
       );
       res.status(500).json({
-        status: "failed",
+        status: "error",
         message: "An error ocurred",
       });
+      throw error;
     });
 };
 
 exports.getAllVolunteers = async (req, res) => {
   try {
     const volunteers = await Volunteer.findAll({ include: User });
-    logger.info("Volunteers have been fetched successfully");
 
     return res.status(200).json({
       volunteers,
@@ -52,7 +65,30 @@ exports.getAllVolunteers = async (req, res) => {
     );
     return res.status(500).json({
       message: "An error occured",
-      status: "failed",
+      status: "error",
+    });
+  }
+};
+
+exports.getSingleVolunteer = async (req, res) => {
+  try {
+    const volunteer = await Volunteer.findOne({
+      include: User,
+      where: { id: req.params.id },
+    });
+
+    return res.status(200).json({
+      volunteer,
+      message: "Volunteer has been fetched",
+      status: "success",
+    });
+  } catch (error) {
+    logger.error(
+      `(getSingleVolunteer) Volunteer could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      message: "An error occured while fetching volunteer",
+      status: "error",
     });
   }
 };
@@ -75,7 +111,7 @@ exports.deleteVolunteer = async (req, res) => {
       );
       return res.status(500).json({
         message: "Volunteer was not deleted",
-        status: "failed",
+        status: "error",
       });
     });
 };
@@ -84,11 +120,11 @@ exports.updateVolunteer = async (req, res) => {
   const volunteer = await Volunteer.findByPk(req.params.id);
   if (!volunteer)
     return res.status(404).json({
-      status: "failed",
+      status: "error",
       message: "Volunteer was not found",
     });
   const { name, email, phoneNumber, message } = req.body;
-  const user = await User.findOne({ where: { phoneNumber } });
+  const user = await User.findByPk(volunteer.UserId);
   user
     .update({
       name: name || user.name,
@@ -113,7 +149,7 @@ exports.updateVolunteer = async (req, res) => {
         );
         return res.status(500).json({
           message: "Volunteer was not updated",
-          status: "failed",
+          status: "error",
         });
       }
     })
@@ -123,7 +159,7 @@ exports.updateVolunteer = async (req, res) => {
       );
       return res.status(500).json({
         message: "Volunteer was not updated",
-        status: "failed",
+        status: "error",
       });
     });
 };
