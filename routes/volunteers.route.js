@@ -6,13 +6,14 @@ const {
   deleteVolunteer,
   updateVolunteer,
 } = require("../controllers/volunteers.controller");
+const verifyToken = require("../utils/verifyToken");
 
-router.route("/").post(createVolunteers).get(getAllVolunteers);
+router.route("/").post(createVolunteers).get(verifyToken, getAllVolunteers);
 
 router
   .route("/:id")
-  .delete(deleteVolunteer)
-  .put(updateVolunteer)
-  .get(getSingleMember);
+  .delete(verifyToken, deleteVolunteer)
+  .put(verifyToken, updateVolunteer)
+  .get(verifyToken, getSingleMember);
 
 module.exports = router;

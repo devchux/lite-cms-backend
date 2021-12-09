@@ -8,4 +8,7 @@ module.exports = {
   dbDialect: process.env.DB_DIALECT,
   dbHost: process.env.DB_HOST,
   jwtToken: process.env.JWT_TOKEN,
+  cloudinaryAPIKey: process.env.CLOUDINARY_API_KEY,
+  cloudinaryAPISecret: process.env.CLOUDINARY_API_SECRET,
+  cloudinaryAPICloudName: process.env.CLOUDINARY_API_CLOUD_NAME,
 };
