@@ -1,7 +1,20 @@
-const { getAllArticles } = require('../controllers/articles.controller');
+const {
+  getAllArticles,
+  createArticle,
+  findArticleById,
+  updateArticle,
+  deleteArticle,
+  findArticleBySlug,
+} = require("../controllers/articles.controller");
 
-const router = require('express').Router();
+const router = require("express").Router();
 
-router.route('/').get(getAllArticles)
+router.route("/").get(getAllArticles).post(createArticle);
+router
+  .route("/:id")
+  .get(findArticleById)
+  .put(updateArticle)
+  .delete(deleteArticle);
+router.route("/slug/:slug").get(findArticleBySlug);
 
 module.exports = router;

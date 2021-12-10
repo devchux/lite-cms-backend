@@ -1,7 +1,7 @@
 const { DataTypes } = require("sequelize/dist");
 const sequelize = require("../config/db");
 const Member = require("./members.model");
-const Subject = require("./subjects.model");
+const AudioSubject = require("./audio-subject.model");
 
 const AudioSchema = {
   id: {
@@ -10,6 +10,10 @@ const AudioSchema = {
     primaryKey: true,
   },
   audioUrl: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  slug: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -28,9 +32,9 @@ const Audio = sequelize.define('Audio', AudioSchema, { timestamps: true });
 Member.hasMany(Audio);
 Audio.belongsTo(Member)
 
-Subject.hasMany(Audio, {
+AudioSubject.hasMany(Audio, {
   onDelete: "CASCADE",
 });
-Audio.belongsTo(Subject);
+Audio.belongsTo(AudioSubject);
 
 module.exports = Audio;

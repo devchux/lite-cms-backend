@@ -1,19 +1,18 @@
 const { DataTypes } = require("sequelize/dist");
 const sequelize = require("../config/db");
-const Member = require("./members.model");
 
-const SubjectSchema = {
+const PhotoSchema = {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  title: {
+  photoUrl: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-}
+};
 
-const Subject = sequelize.define('Subject', SubjectSchema, { timestamps: true });
+const Photo = sequelize.define("Photo", PhotoSchema, { timestamps: true });
 
-module.exports = Subject;
+module.exports = Photo;

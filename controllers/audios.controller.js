@@ -1,5 +1,5 @@
 const fs = require("fs");
-const Subject = require("../models/subjects.model");
+const AudioSubject = require("../models/audio-subject.model");
 const { cloudinaryV2, fileUpload } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
 
@@ -11,7 +11,7 @@ exports.uploadAudio = (req, res) => {
       logger.error(`(uploadAudio) Multer Audio upload error: ${err.message}`);
       return res.status(400).json({
         status: "error",
-        message: "Image could not be uploaded",
+        message: "Audio could not be uploaded",
       });
     }
 
@@ -31,19 +31,20 @@ exports.uploadAudio = (req, res) => {
           );
           return res.status(400).json({
             status: "error",
-            message: "Image could not be uploaded",
+            message: "Audio could not be uploaded",
           });
         }
 
         fs.unlinkSync(path);
-        const { title, audioDescription, audioTitle } = req.body;
-        Subject.create({ title })
+        const { title, audioDescription, audioTitle, slug } = req.body;
+        AudioSubject.create({ title })
           .then(async ({ id }) => {
             try {
               const audioDb = await Audio.create({
+                slug,
                 audioUrl: audio.secure_url,
                 SubjectId: id,
-                UserId: req.user.UserId,
+                UserId: req.user.userId,
                 title: audioTitle,
                 description: audioDescription,
               });
@@ -68,7 +69,7 @@ exports.uploadAudio = (req, res) => {
             );
             return res.status(400).json({
               status: "error",
-              message: "Image could not be uploaded",
+              message: "Audio could not be uploaded",
             });
           });
       }
@@ -77,7 +78,7 @@ exports.uploadAudio = (req, res) => {
 };
 
 exports.uploadMoreAudio = async (req, res) => {
-  const subject = await Subject.findByPk(req.params.id);
+  const subject = await AudioSubject.findByPk(req.params.id);
   if (!subject) {
     return res.status(400).json({
       status: "error",
@@ -93,7 +94,7 @@ exports.uploadMoreAudio = async (req, res) => {
       );
       return res.status(400).json({
         status: "error",
-        message: "Image could not be uploaded",
+        message: "Audio could not be uploaded",
       });
     }
 
@@ -113,7 +114,7 @@ exports.uploadMoreAudio = async (req, res) => {
           );
           return res.status(400).json({
             status: "error",
-            message: "Image could not be uploaded",
+            message: "Audio could not be uploaded",
           });
         }
 
@@ -122,7 +123,8 @@ exports.uploadMoreAudio = async (req, res) => {
           const audioDb = await Audio.create({
             audioUrl: audio.secure_url,
             SubjectId: subject.id,
-            UserId: req.user.UserId,
+            slug: req.body.slug,
+            UserId: req.user.userId,
             title: req.body.audioTitle,
             description: req.body.audioDescription,
           });
@@ -166,4 +168,26 @@ exports.deleteAudioFromDb = (req, res) => {
         status: "error",
       });
     });
+}
+
+exports.getAudios = async (req, res) => {
+  try {
+    const audios = await Audio.findAll({
+      where: {
+        slug: req.params.slug
+      }
+    });
+
+    return res.status(200).json({
+      status: "success",
+      message: "Audios has been fetched",
+      audios,
+    });
+  } catch (error) {
+    logger.error(`(getAudios) Audios could not be fetched: ${error.message}`);
+    return res.status(500).json({
+      status: "error",
+      message: "Audios could not be fetched",
+    });
+  }
 }

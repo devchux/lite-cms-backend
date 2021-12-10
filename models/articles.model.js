@@ -24,6 +24,10 @@ const ArticleSchema = {
     type: DataTypes.TEXT,
     allowNull: false,
   },
+  published: {
+    type: DataTypes.BOOLEAN,
+    defaultValue: true,
+  },
 };
 
 const Article = sequelize.define("Article", ArticleSchema, {

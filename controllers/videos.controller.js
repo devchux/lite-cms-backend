@@ -1,14 +1,15 @@
-const Subject = require("../models/subjects.model");
+const VideoSubject = require("../models/video-subject.model");
 const Video = require("../models/videos.model");
 
 exports.uploadVideo = (req, res) => {
-  const { title, videoDescription, videoTitle, videoUrl } = req.body;
-  Subject.create({ title }).then(async ({ id }) => {
+  const { title, videoDescription, videoTitle, videoUrl, slug } = req.body;
+  VideoSubject.create({ title }).then(async ({ id }) => {
     try {
       const videoDb = await Video.create({
         videoUrl,
+        slug,
         SubjectId: id,
-        UserId: req.user.UserId,
+        UserId: req.user.userId,
         title: videoTitle,
         description: videoDescription,
       });
@@ -30,7 +31,7 @@ exports.uploadVideo = (req, res) => {
 };
 
 exports.uploadMoreVideos = async (req, res) => {
-  const subject = await Subject.findByPk(req.params.id);
+  const subject = await VideoSubject.findByPk(req.params.id);
   if (!subject) {
     return res.status(400).json({
       status: "error",
@@ -41,7 +42,8 @@ exports.uploadMoreVideos = async (req, res) => {
     const videoDb = await Video.create({
       videoUrl: req.body.videoUrl,
       SubjectId: subject.id,
-      UserId: req.user.UserId,
+      UserId: req.user.userId,
+      slug: req.body.slug,
       title: req.body.videoTitle,
       description: req.body.videoDescription,
     });
@@ -83,4 +85,26 @@ exports.deleteVideoFromDb = (req, res) => {
         status: "error",
       });
     });
+}
+
+exports.getAllVideos = async (req, res) => {
+  try {
+    const videos = await Video.findAll({
+      where: {
+        slug: req.params.slug
+      }
+    });
+
+    return res.status(200).json({
+      status: "success",
+      message: "Videos has been fetched",
+      videos,
+    });
+  } catch (error) {
+    logger.error(`(getAllVideos) Videos could not be fetched: ${error.message}`);
+    return res.status(400).json({
+      status: "error",
+      message: "Videos could not be fetched",
+    });
+  }
 }

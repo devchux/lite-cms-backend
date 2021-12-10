@@ -1,13 +1,17 @@
 const { DataTypes } = require("sequelize/dist");
 const sequelize = require("../config/db");
 const Member = require("./members.model");
-const Subject = require("./subjects.model");
+const VideoSubject = require("./video-subject.model");
 
 const VideoSchema = {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
+  },
+  slug: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   videoUrl: {
     type: DataTypes.STRING,
@@ -28,9 +32,9 @@ const Video = sequelize.define('Video', VideoSchema, { timestamps: true });
 Member.hasMany(Video);
 Video.belongsTo(Member)
 
-Subject.hasMany(Video, {
+VideoSubject.hasMany(Video, {
   onDelete: "CASCADE",
 });
-Video.belongsTo(Subject)
+Video.belongsTo(VideoSubject)
 
 module.exports = Video;
