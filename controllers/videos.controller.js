@@ -1,5 +1,6 @@
 const VideoSubject = require("../models/video-subject.model");
 const Video = require("../models/videos.model");
+const logger = require("../utils/logger");
 
 exports.uploadVideo = (req, res) => {
   const { title, videoDescription, videoTitle, videoUrl, slug } = req.body;
@@ -108,3 +109,96 @@ exports.getAllVideos = async (req, res) => {
     });
   }
 }
+
+exports.getVideoSubjects = async (req, res) => {
+  try {
+    const subjects = await VideoSubject.findAll();
+
+    return res.status(200).json({
+      status: "success",
+      message: "Video subjects have been fetched",
+      subjects,
+    });
+  } catch (error) {
+    logger.error(
+      `(getVideoSubjects) Video subjects could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.getSingleVideoSubject = async (req, res) => {
+  try {
+    const subject = await VideoSubject.findByPk(req.params.id);
+
+    return res.status(200).json({
+      status: "success",
+      message: "Video subject have been fetched",
+      subject,
+    });
+  } catch (error) {
+    logger.error(
+      `(getSingleVideoSubject) Video subject could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.updateVideoSubject = async (req, res) => {
+  try {
+    const subject = await VideoSubject.findByPk(req.params.id);
+
+    if (!subject)
+      return res.status(404).json({
+        status: "error",
+        message: "Subject does not exist",
+      });
+
+    const newSubject = await VideoSubject.update({
+      title: req.body.title || subject.title
+    })
+
+    return res.status(200).json({
+      status: "success",
+      message: "Video subject have been fetched",
+      subject: newSubject,
+    });
+  } catch (error) {
+    logger.error(
+      `(updateVideoSubject) Video subject could not be updated: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.deleteVideoSubject = (req, res) => {
+  VideoSubject.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Video collection has been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteVideoSubject) Video collection could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Video collection was not deleted",
+        status: "error",
+      });
+    });
+};

@@ -1,7 +1,7 @@
-const { DataTypes } = require("sequelize/dist");
+const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 
-const UserSchema = {
+const ContactSchema = {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
@@ -20,13 +20,16 @@ const UserSchema = {
       isEmail: true,
     },
   },
-  phoneNumber: {
+  subject: {
     type: DataTypes.STRING,
-    allowNull: true,
-    unique: true,
+    allowNull: false,
+  },
+  message: {
+    type: DataTypes.TEXT,
+    allowNull: false,
   }
-};
+}
 
-const User = sequelize.define("User", UserSchema, { timestamps: true });
+const Contact = sequelize.define('Contact', ContactSchema, { timestamps: true })
 
-module.exports = User;
+module.exports = Contact

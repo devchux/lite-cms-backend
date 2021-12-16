@@ -1,5 +1,6 @@
 const fs = require("fs");
 const AudioSubject = require("../models/audio-subject.model");
+const Audio = require("../models/audios.model");
 const { cloudinaryV2, fileUpload } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
 
@@ -168,14 +169,14 @@ exports.deleteAudioFromDb = (req, res) => {
         status: "error",
       });
     });
-}
+};
 
 exports.getAudios = async (req, res) => {
   try {
     const audios = await Audio.findAll({
       where: {
-        slug: req.params.slug
-      }
+        slug: req.params.slug,
+      },
     });
 
     return res.status(200).json({
@@ -190,4 +191,97 @@ exports.getAudios = async (req, res) => {
       message: "Audios could not be fetched",
     });
   }
-}
+};
+
+exports.getAudioSubjects = async (req, res) => {
+  try {
+    const subjects = await AudioSubject.findAll();
+
+    return res.status(200).json({
+      status: "success",
+      message: "Audio subjects have been fetched",
+      subjects,
+    });
+  } catch (error) {
+    logger.error(
+      `(getAudioSubjects) Audio subjects could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.getSingleAudioSubject = async (req, res) => {
+  try {
+    const subject = await AudioSubject.findByPk(req.params.id);
+
+    return res.status(200).json({
+      status: "success",
+      message: "Audio subject have been fetched",
+      subject,
+    });
+  } catch (error) {
+    logger.error(
+      `(getSingleAudioSubject) Audio subject could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.updateAudioSubject = async (req, res) => {
+  try {
+    const subject = await AudioSubject.findByPk(req.params.id);
+
+    if (!subject)
+      return res.status(404).json({
+        status: "error",
+        message: "Subject does not exist",
+      });
+
+    const newSubject = await AudioSubject.update({
+      title: req.body.title || subject.title,
+    });
+
+    return res.status(200).json({
+      status: "success",
+      message: "Audio subject have been fetched",
+      subject: newSubject,
+    });
+  } catch (error) {
+    logger.error(
+      `(updateAudioSubject) Audio subject could not be updated: ${error.message}`
+    );
+    return res.status(500).json({
+      status: "error",
+      message: "An error occurred",
+    });
+  }
+};
+
+exports.deleteAudioSubject = (req, res) => {
+  AudioSubject.destroy({
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Audio collection has been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteAudioSubject) Audio collection could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Audio collection was not deleted",
+        status: "error",
+      });
+    });
+};

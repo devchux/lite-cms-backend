@@ -9,7 +9,7 @@ const verifyToken = (req, res, next) => {
       .status(403)
       .json({
         status: "error",
-        message: "A token is required for authentication",
+        message: "User is not logged in",
       });
   }
   try {
