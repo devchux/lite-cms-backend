@@ -94,7 +94,22 @@ exports.findArticleBySlug = async (req, res) => {
 exports.updateArticle = async (req, res) => {
   const { title, body, imageUrl, slug, published } = req.body;
   try {
-    const article = await Article.findByPk(req.params.id);
+    const article = await Article.findOne({
+      where: { id: req.params.id },
+      include: Member,
+    });
+
+    if (!article)
+      return res.status(404).json({
+        status: "error",
+        message: "Article could not be found",
+      });
+
+    if (article.MemberId !== req.user.userId || req.user.role !== "admin")
+      return res.status(403).json({
+        status: "error",
+        message: "You are not authorized to perform this action",
+      });
     const updatedArticle = await Article.update({
       title: title || article.title,
       body: body || article.body,
@@ -139,4 +154,4 @@ exports.deleteArticle = (req, res) => {
         status: "error",
       });
     });
-}
+};
