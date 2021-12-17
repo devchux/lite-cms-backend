@@ -33,7 +33,7 @@ exports.createVolunteers = async (req, res) => {
           `(createVolunteers) Volunteer was not registered: ${error.message}`
         );
         return res.status(500).json({
-          message: "An error occured",
+          message: "An error occurred",
           status: "error",
         });
       }
@@ -64,7 +64,7 @@ exports.getAllVolunteers = async (req, res) => {
       `(getAllVolunteers) List of volunteers could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }
@@ -87,7 +87,7 @@ exports.getSingleVolunteer = async (req, res) => {
       `(getSingleVolunteer) Volunteer could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured while fetching volunteer",
+      message: "An error occurred while fetching volunteer",
       status: "error",
     });
   }

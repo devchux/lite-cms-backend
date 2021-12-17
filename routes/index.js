@@ -8,6 +8,7 @@ const PhotoRoutes = require("./photos.route");
 const BookRoutes = require("./books.route");
 const EventRoutes = require("./events.route");
 const ContactRoutes = require("./contacts.route");
+const ClassRoutes = require("./classes.route");
 
 router.use("/volunteers", VolunteerRoutes);
 router.use("/members", MemberRoutes);
@@ -18,5 +19,6 @@ router.use("/photos", PhotoRoutes);
 router.use("/books", BookRoutes);
 router.use("/events", EventRoutes);
 router.use("/contacts", ContactRoutes);
+router.use("/classes", ClassRoutes);
 
 module.exports = router;

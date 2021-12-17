@@ -16,7 +16,7 @@ exports.getAllArticles = async (req, res) => {
       `(getAllArticles) List of articles could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }
@@ -43,7 +43,7 @@ exports.createArticle = async (req, res) => {
       `(createArticle) Article could not be created: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }
@@ -62,7 +62,7 @@ exports.findArticleById = async (req, res) => {
       `(findArticleById) Article could not be found: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }
@@ -85,7 +85,7 @@ exports.findArticleBySlug = async (req, res) => {
       `(findArticleBySlug) Article could not be found: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }
@@ -127,7 +127,7 @@ exports.updateArticle = async (req, res) => {
       `(updateArticle) Article could not be updated: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occured",
+      message: "An error occurred",
       status: "error",
     });
   }

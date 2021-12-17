@@ -41,7 +41,7 @@ exports.createMembers = async (req, res) => {
           );
           return res.status(500).json({
             status: "error",
-            message: "An error occured",
+            message: "An error occurred",
           });
         }
       })
@@ -57,7 +57,7 @@ exports.createMembers = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occured",
+      message: "An error occurred",
     });
   }
 };
@@ -75,7 +75,7 @@ exports.getAllMembers = async (req, res) => {
     logger.error(`(getAllMembers) Users were not fetched: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error occured while fetching Users",
+      message: "An error occurred while fetching Users",
     });
   }
 };
@@ -98,7 +98,7 @@ exports.getSingleMember = async (req, res) => {
     logger.error(`(getSingleMember) User was not fetched: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error occured while fetching User",
+      message: "An error occurred while fetching User",
     });
   }
 };

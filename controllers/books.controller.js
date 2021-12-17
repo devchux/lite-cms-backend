@@ -21,7 +21,7 @@ exports.addBook = async (req, res) => {
     logger.error(`(addBook) Books could not be created: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occured",
+      message: "An error occurred",
     });
   }
 };
@@ -39,7 +39,7 @@ exports.getAllBooks = async (req, res) => {
     logger.error(`(getAllBooks) Books could not be fetched: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occured",
+      message: "An error occurred",
     });
   }
 };
@@ -62,7 +62,7 @@ exports.getSingleBook = async (req, res) => {
     logger.error(`(getSingleBook) Book could not be fetched: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occured",
+      message: "An error occurred",
     });
   }
 };
@@ -95,7 +95,7 @@ exports.updateBook = async (req, res) => {
     logger.error(`(updateBook) Book could not be updated: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occured",
+      message: "An error occurred",
     });
   }
 };
