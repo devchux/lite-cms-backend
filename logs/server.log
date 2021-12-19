@@ -528,3 +528,9 @@ info: Dec-17-2021 18:21:48: 	Connection has been established successfully
 info: Dec-17-2021 18:22:08: 	Connection has been established successfully
 info: Dec-17-2021 18:22:31: 	Connection has been established successfully
 info: Dec-17-2021 18:23:24: 	Connection has been established successfully
+info: Dec-17-2021 18:23:57: 	Connection has been established successfully
+error: Dec-19-2021 19:01:37: 	(getAllArticles) List of articles could not be fetched: Unknown column 'Article.published' in 'field list'
+error: Dec-19-2021 19:02:08: 	(getAllArticles) List of articles could not be fetched: Unknown column 'Article.published' in 'field list'
+info: Dec-19-2021 19:05:00: 	Connection has been established successfully
+error: Dec-19-2021 19:09:12: 	(createMembers) User could not be searched for: WHERE parameter "email" has invalid "undefined" value
+error: Dec-19-2021 19:11:34: 	(createMembers) User could not be searched for: WHERE parameter "email" has invalid "undefined" value
