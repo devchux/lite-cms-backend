@@ -1,5 +1,6 @@
 const Book = require("../models/books.model");
 const logger = require("../utils/logger");
+const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.addBook = async (req, res) => {
   const { title, imageUrl, description, price, author } = req.body;
@@ -27,13 +28,17 @@ exports.addBook = async (req, res) => {
 };
 
 exports.getAllBooks = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const books = await Book.findAll();
+    const books = await Book.findAndCountAll({ limit, offset });
+
+    const data = getPagingData(books, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Books have been fetched",
-      books,
+      books: data,
     });
   } catch (error) {
     logger.error(`(getAllBooks) Books could not be fetched: ${error.message}`);

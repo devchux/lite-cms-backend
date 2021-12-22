@@ -1,6 +1,7 @@
 const User = require("../models/users.model");
 const Volunteer = require("../models/volunteers.model");
 const logger = require("../utils/logger");
+const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createVolunteers = async (req, res) => {
   const { name, email, phoneNumber, message } = req.body;
@@ -51,11 +52,15 @@ exports.createVolunteers = async (req, res) => {
 };
 
 exports.getAllVolunteers = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const volunteers = await Volunteer.findAll({ include: User });
+    const volunteers = await Volunteer.findAndCountAll({ include: User, limit, offset });
+
+    const data = getPagingData(volunteers, page, limit)
 
     return res.status(200).json({
-      volunteers,
+      volunteers: data,
       message: "Here are the list of volunteers",
       status: "success",
     });

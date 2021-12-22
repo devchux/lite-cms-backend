@@ -1,5 +1,6 @@
 const Event = require("../models/events.model");
 const logger = require("../utils/logger");
+const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createEvent = async (req, res) => {
   const { title, description, imageUrl, date, time, venue } = req.body;
@@ -28,13 +29,17 @@ exports.createEvent = async (req, res) => {
 };
 
 exports.getAllEvents = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const events = await Event.findAll();
+    const events = await Event.findAndCountAll({ limit, offset });
+
+    const data = getPagingData(events, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Events have been fetched",
-      events,
+      events: data,
     });
   } catch (error) {
     logger.error(

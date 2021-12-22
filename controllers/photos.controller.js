@@ -1,6 +1,7 @@
 const Photo = require("../models/photos.model");
 const { fileUpload } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
+const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.uploadPhoto = async (req, res) => {
   const upload = fileUpload(
@@ -62,13 +63,17 @@ exports.uploadPhoto = async (req, res) => {
 };
 
 exports.getAllPhotos = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const photos = await Photo.findAll();
+    const photos = await Photo.findAndCountAll({ offset, limit });
+
+    const data = getPagingData(photos, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Photos has been fetched",
-      photos,
+      photos: data,
     });
   } catch (error) {
     logger.error(`(getAllPhotos) Photos could not be fetched: ${error.message}`);

@@ -1,5 +1,6 @@
 const express = require("express");
 const routes = require('./routes')
+const cors = require('cors');
 const sequelize = require("./config/db")
 const logger = require('./utils/logger');
 
@@ -22,6 +23,7 @@ sequelize.sync().catch((error) => {
   throw error;
 });
 
+app.use(cors())
 app.use(express.json());
 
 app.use(express.urlencoded({ extended: false }));

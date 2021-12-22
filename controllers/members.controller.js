@@ -4,6 +4,7 @@ const logger = require("../utils/logger");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { jwtToken } = require("../config/constants");
+const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createMembers = async (req, res) => {
   const { name, email, role, phoneNumber, password } = req.body;
@@ -63,13 +64,17 @@ exports.createMembers = async (req, res) => {
 };
 
 exports.getAllMembers = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const users = await Member.findAll({ include: User });
+    const users = await Member.findAndCountAll({ include: User, limit, offset });
+
+    const data = getPagingData(users, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Here are the list of members",
-      users,
+      users: data,
     });
   } catch (error) {
     logger.error(`(getAllMembers) Users were not fetched: ${error.message}`);

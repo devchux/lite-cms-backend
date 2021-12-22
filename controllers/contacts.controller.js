@@ -1,5 +1,6 @@
 const Contact = require("../models/contacts.model");
 const logger = require("../utils/logger");
+const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createContact = async (req, res) => {
   const { name, email, subject, message } = req.body;
@@ -22,13 +23,17 @@ exports.createContact = async (req, res) => {
 };
 
 exports.getAllContacts = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const contacts = await Contact.findAll();
+    const contacts = await Contact.findAndCountAll({ limit, offset });
+
+    const data = getPagingData(contacts, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Contacts have been fetched",
-      contacts,
+      contacts: data,
     });
   } catch (error) {
     logger.error(

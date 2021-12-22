@@ -1,4 +1,5 @@
 const Class = require("../models/classes.model");
+const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.createClass = async (req, res) => {
   const { name, email, phoneNumber, title } = req.body;
@@ -25,17 +26,23 @@ exports.createClass = async (req, res) => {
 };
 
 exports.findUserByClass = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const classes = await Class.findAll({
+    const classes = await Class.findAndCountAll({
       where: {
         class: req.params.title,
       },
+      limit,
+      offset,
     });
+
+    const data = getPagingData(classes, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Classes have been fetched",
-      classes,
+      classes: data,
     });
   } catch (error) {
     logger.error(
@@ -48,18 +55,22 @@ exports.findUserByClass = async (req, res) => {
   }
 };
 
-exports.findAllClasses = async (req, res) => {
+exports.findAndCountAllClasses = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const classes = await Class.findAll();
+    const classes = await Class.findAndCountAll({ limit, offset });
+
+    const data = getPagingData(classes, page, limit);
 
     return res.status(200).json({
       status: "success",
       message: "Classes have been fetched",
-      classes,
+      classes: data,
     });
   } catch (error) {
     logger.error(
-      `(findAllClasses) Class could not be fetched: ${error.message}`
+      `(findAndCountAllClasses) Class could not be fetched: ${error.message}`
     );
     return res.status(500).json({
       status: "error",

@@ -3,6 +3,7 @@ const AudioSubject = require("../models/audio-subject.model");
 const Audio = require("../models/audios.model");
 const { cloudinaryV2, fileUpload } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
+const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.uploadAudio = (req, res) => {
   const upload = fileUpload(["audio/mp3", "audio/mpeg"], "audio");
@@ -172,17 +173,23 @@ exports.deleteAudioFromDb = (req, res) => {
 };
 
 exports.getAudios = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const audios = await Audio.findAll({
+    const audios = await Audio.findAndCountAll({
       where: {
         slug: req.params.slug,
       },
+      limit,
+      offset,
     });
+
+    const data = getPagingData(audios, page, limit);
 
     return res.status(200).json({
       status: "success",
       message: "Audios has been fetched",
-      audios,
+      audios: data,
     });
   } catch (error) {
     logger.error(`(getAudios) Audios could not be fetched: ${error.message}`);
@@ -194,13 +201,17 @@ exports.getAudios = async (req, res) => {
 };
 
 exports.getAudioSubjects = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const subjects = await AudioSubject.findAll();
+    const subjects = await AudioSubject.findAndCountAll({ offset, limit });
+
+    const data = getPagingData(subjects, page, limit)
 
     return res.status(200).json({
       status: "success",
       message: "Audio subjects have been fetched",
-      subjects,
+      subjects: data,
     });
   } catch (error) {
     logger.error(

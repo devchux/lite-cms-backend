@@ -1,6 +1,7 @@
 const VideoSubject = require("../models/video-subject.model");
 const Video = require("../models/videos.model");
 const logger = require("../utils/logger");
+const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.uploadVideo = (req, res) => {
   const { title, videoDescription, videoTitle, videoUrl, slug } = req.body;
@@ -62,8 +63,7 @@ exports.uploadMoreVideos = async (req, res) => {
       message: "Video could not be uploaded",
     });
   }
-
-}
+};
 
 exports.deleteVideoFromDb = (req, res) => {
   Video.destroy({
@@ -86,38 +86,50 @@ exports.deleteVideoFromDb = (req, res) => {
         status: "error",
       });
     });
-}
+};
 
 exports.getAllVideos = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const videos = await Video.findAll({
+    const videos = await Video.findAndCountAll({
       where: {
-        slug: req.params.slug
-      }
+        slug: req.params.slug,
+      },
+      limit,
+      offset,
     });
+
+    const data = getPagingData(videos, page, limt);
 
     return res.status(200).json({
       status: "success",
       message: "Videos has been fetched",
-      videos,
+      videos: data,
     });
   } catch (error) {
-    logger.error(`(getAllVideos) Videos could not be fetched: ${error.message}`);
+    logger.error(
+      `(getAllVideos) Videos could not be fetched: ${error.message}`
+    );
     return res.status(400).json({
       status: "error",
       message: "Videos could not be fetched",
     });
   }
-}
+};
 
 exports.getVideoSubjects = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const subjects = await VideoSubject.findAll();
+    const subjects = await VideoSubject.findAndCountAll({ limit, offset });
+
+    const data = getPagingData(subjects, page, limit);
 
     return res.status(200).json({
       status: "success",
       message: "Video subjects have been fetched",
-      subjects,
+      subjects: data,
     });
   } catch (error) {
     logger.error(
@@ -161,8 +173,8 @@ exports.updateVideoSubject = async (req, res) => {
       });
 
     const newSubject = await VideoSubject.update({
-      title: req.body.title || subject.title
-    })
+      title: req.body.title || subject.title,
+    });
 
     return res.status(200).json({
       status: "success",

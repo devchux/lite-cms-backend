@@ -1,13 +1,18 @@
 const Member = require("../models/members.model");
 const Article = require("../models/articles.model");
 const logger = require("../utils/logger");
+const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.getAllArticles = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
   try {
-    const articles = await Article.findAll({ include: Member });
+    const articles = await Article.findAndCountAll({ include: Member, limit, offset });
+
+    const data = getPagingData(articles, page, limit);
 
     return res.status(200).json({
-      articles,
+      articles: data,
       message: "Here are the list of articles",
       status: "success",
     });
