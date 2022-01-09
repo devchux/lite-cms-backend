@@ -10,7 +10,6 @@ const app = express();
   try {
     await sequelize.authenticate();
     console.log('Connection has been established successfully.');
-    logger.info('Connection has been established successfully');
   } catch (error) {
     console.error('Unable to connect to the database:', error);
     logger.error(`Unable to connect to the database: ${error.message}`);
@@ -26,7 +25,7 @@ sequelize.sync().catch((error) => {
 app.use(cors())
 app.use(express.json());
 
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 app.use('/api', routes);
 

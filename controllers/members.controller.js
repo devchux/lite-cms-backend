@@ -15,27 +15,86 @@ exports.createMembers = async (req, res) => {
       },
     });
     if (user) {
-      logger.error(`(createMembers) Member already exist: ${user.id}`);
-      return res.status(403).json({
-        status: "error",
-        message: "Member already exist",
+      const member = await Member.findOne({
+        where: { UserId: user.id },
       });
+      if (member) {
+        logger.error(`(createMembers) Member already exist: ${user.id}`);
+        return res.status(403).json({
+          status: "error",
+          message: "Member already exist",
+        });
+      }
+      try {
+        const hashPassword = await bcrypt.hash(password, 10);
+        const newMember = await Member.create(
+          {
+            UserId: user.id,
+            role,
+            password: hashPassword,
+          },
+          { include: [User] }
+        );
+        if (newMember) {
+          Member.findByPk(newMember.id, { include: User })
+            .then((member) => {
+              return res.status(201).json({
+                user: member,
+                status: "success",
+                message: "Member has been created",
+              });
+            })
+            .catch((error) => {
+              logger.error(
+                `(createMembers) Member could not be fetched after being saved: ${error.message}`
+              );
+              return res.status(500).json({
+                status: "error",
+                message: "An error occurred",
+              });
+            });
+        }
+      } catch (error) {
+        logger.error(
+          `(createMembers) Member could not be created: ${error.message}`
+        );
+        return res.status(500).json({
+          status: "error",
+          message: "An error occurred",
+        });
+      }
     }
     User.create({ name, email, phoneNumber: phoneNumber.toString() })
       .then(async ({ id }) => {
         try {
           const hashPassword = await bcrypt.hash(password, 10);
-          const newMember = await Member.create({
-            UserId: id,
-            role,
-            password: hashPassword,
-          });
-
-          return res.status(201).json({
-            user: newMember,
-            status: "success",
-            message: "Member has been created",
-          });
+          const newMember = await Member.create(
+            {
+              UserId: id,
+              role,
+              password: hashPassword,
+            },
+            { include: [User] }
+          );
+          if (newMember) {
+            Member.findByPk(newMember.id, { include: User })
+              .then((member) => {
+                return res.status(201).json({
+                  user: member,
+                  status: "success",
+                  message: "Member has been created",
+                });
+              })
+              .catch((error) => {
+                logger.error(
+                  `(createMembers) Member could not be fetched after being saved: ${error.message}`
+                );
+                return res.status(500).json({
+                  status: "error",
+                  message: "An error occurred",
+                });
+              });
+          }
         } catch (error) {
           logger.error(
             `(createMembers) Member could not be created: ${error.message}`
@@ -67,9 +126,13 @@ exports.getAllMembers = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const users = await Member.findAndCountAll({ include: User, limit, offset });
+    const users = await Member.findAndCountAll({
+      include: User,
+      limit,
+      offset,
+    });
 
-    const data = getPagingData(users, page, limit)
+    const data = getPagingData(users, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -182,6 +245,29 @@ exports.deleteMember = async (req, res) => {
       );
       return res.status(500).json({
         message: "Member was not deleted",
+        status: "error",
+      });
+    });
+};
+
+exports.deleteBulkMembers = async (req, res) => {
+  Member.destroy({
+    where: {
+      id: req.body.ids,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Members have been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteBulkMembers) Members could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Members were not deleted",
         status: "error",
       });
     });
