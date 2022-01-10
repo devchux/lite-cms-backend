@@ -12,7 +12,7 @@ const ClassRoutes = require("./classes.route");
 
 router.use("/volunteers", VolunteerRoutes);
 router.use("/members", MemberRoutes);
-router.use("/articles", ArticleRoutes);
+router.use("/posts", ArticleRoutes);
 router.use("/audios", AudiosRoutes);
 router.use("/videos", VideosRoutes);
 router.use("/photos", PhotoRoutes);

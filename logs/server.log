@@ -18,3 +18,15 @@ error: Jan-09-2022 02:10:06: 	(createMembers) User could not be created: Validat
 error: Jan-09-2022 02:22:36: 	(createMembers) User could not be created: Validation error
 error: Jan-09-2022 02:23:14: 	(createMembers) User could not be created: Validation error
 error: Jan-09-2022 02:23:27: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 12:10:33: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 12:28:49: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 12:34:10: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 15:37:04: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 16:21:03: 	(createMembers) User could not be created: Validation error
+error: Jan-09-2022 16:23:01: 	(createMembers) User could not be created: Validation error
+error: Jan-10-2022 09:45:04: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-10-2022 09:45:04: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-10-2022 09:46:12: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-10-2022 09:46:12: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-10-2022 09:47:47: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-10-2022 09:47:47: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306

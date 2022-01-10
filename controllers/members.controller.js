@@ -35,25 +35,29 @@ exports.createMembers = async (req, res) => {
           },
           { include: [User] }
         );
-        if (newMember) {
-          Member.findByPk(newMember.id, { include: User })
-            .then((member) => {
-              return res.status(201).json({
-                user: member,
-                status: "success",
-                message: "Member has been created",
-              });
-            })
-            .catch((error) => {
-              logger.error(
-                `(createMembers) Member could not be fetched after being saved: ${error.message}`
-              );
-              return res.status(500).json({
-                status: "error",
-                message: "An error occurred",
-              });
-            });
+        if (!newMember) {
+          return res.status(500).json({
+            status: "error",
+            message: "An error occurred",
+          });
         }
+        Member.findByPk(newMember.id, { include: User })
+          .then((member) => {
+            return res.status(201).json({
+              user: member,
+              status: "success",
+              message: "Member has been created",
+            });
+          })
+          .catch((error) => {
+            logger.error(
+              `(createMembers) Member could not be fetched after being saved: ${error.message}`
+            );
+            return res.status(500).json({
+              status: "error",
+              message: "An error occurred",
+            });
+          });
       } catch (error) {
         logger.error(
           `(createMembers) Member could not be created: ${error.message}`
@@ -76,25 +80,29 @@ exports.createMembers = async (req, res) => {
             },
             { include: [User] }
           );
-          if (newMember) {
-            Member.findByPk(newMember.id, { include: User })
-              .then((member) => {
-                return res.status(201).json({
-                  user: member,
-                  status: "success",
-                  message: "Member has been created",
-                });
-              })
-              .catch((error) => {
-                logger.error(
-                  `(createMembers) Member could not be fetched after being saved: ${error.message}`
-                );
-                return res.status(500).json({
-                  status: "error",
-                  message: "An error occurred",
-                });
-              });
+          if (!newMember) {
+            return res.status(500).json({
+              status: "error",
+              message: "An error occurred",
+            });
           }
+          Member.findByPk(newMember.id, { include: User })
+            .then((member) => {
+              return res.status(201).json({
+                user: member,
+                status: "success",
+                message: "Member has been created",
+              });
+            })
+            .catch((error) => {
+              logger.error(
+                `(createMembers) Member could not be fetched after being saved: ${error.message}`
+              );
+              return res.status(500).json({
+                status: "error",
+                message: "An error occurred",
+              });
+            });
         } catch (error) {
           logger.error(
             `(createMembers) Member could not be created: ${error.message}`
@@ -194,11 +202,22 @@ exports.updateMember = async (req, res) => {
             role: role || member.role,
             password: hashPassword || member.password,
           });
-          return res.status(200).json({
-            status: "success",
-            message: "User has been updated",
-            user: updateMember,
-          });
+          try {
+            const getMember = await Member.findOne({
+              where: { id: updateMember.id },
+              include: User,
+            });
+            return res.status(200).json({
+              status: "success",
+              message: "User has been updated",
+              user: getMember,
+            });
+          } catch (error) {
+            return res.status(500).json({
+              status: "error",
+              message: "User could not be updated",
+            });
+          }
         } catch (error) {
           logger.error(
             `(updateMember) Member could not be updated: ${error.message}`
@@ -302,7 +321,7 @@ exports.loginMember = async (req, res) => {
       { userId: member.id, email, role: member.role },
       jwtToken,
       {
-        expiresIn: "2h",
+        expiresIn: "24h",
       }
     );
     return res.status(200).json({
