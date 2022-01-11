@@ -2,12 +2,17 @@ const Member = require("../models/members.model");
 const Article = require("../models/articles.model");
 const logger = require("../utils/logger");
 const { getPagination, getPagingData } = require("../utils/pagination");
+const User = require("../models/users.model");
 
 exports.getAllArticles = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const articles = await Article.findAndCountAll({ include: Member, limit, offset });
+    const articles = await Article.findAndCountAll({
+      include: [{ model: Member, include: User }],
+      limit,
+      offset,
+    });
 
     const data = getPagingData(articles, page, limit);
 
@@ -115,12 +120,12 @@ exports.updateArticle = async (req, res) => {
         status: "error",
         message: "You are not authorized to perform this action",
       });
-    const updatedArticle = await Article.update({
+    const updatedArticle = await article.update({
       title: title || article.title,
       body: body || article.body,
       imageUrl: imageUrl || article.imageUrl,
       slug: slug || article.slug,
-      published: published || article.published,
+      published: published ? true : false,
     });
     return res.status(200).json({
       article: updatedArticle,
@@ -156,6 +161,29 @@ exports.deleteArticle = (req, res) => {
       );
       return res.status(500).json({
         message: "Article was not deleted",
+        status: "error",
+      });
+    });
+};
+
+exports.deleteArticles = (req, res) => {
+  Article.destroy({
+    where: {
+      id: req.body.ids,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Articles have been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteArticles) Articles could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Articles were not deleted",
         status: "error",
       });
     });
