@@ -36,3 +36,5 @@ error: Jan-11-2022 08:36:52: 	Unable to connect to the database: connect ECONNRE
 error: Jan-11-2022 08:36:52: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
 error: Jan-11-2022 09:12:51: 	(getAllArticles) List of articles could not be fetched: User is not associated to Article!
 error: Jan-11-2022 10:32:53: 	(updateArticle) Article could not be updated: Missing where attribute in the options parameter
+error: Jan-14-2022 23:24:27: 	(uploadPhoto) Multer Photo upload error: Multipart: Boundary not found
+error: Jan-15-2022 00:33:27: 	(uploadPhoto) Cloudinary Photo upload error: getaddrinfo ENOTFOUND api.cloudinary.com

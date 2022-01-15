@@ -1,9 +1,10 @@
 const Photo = require("../models/photos.model");
-const { fileUpload } = require("../utils/fileUpload");
+const fs = require('fs')
+const { fileUpload, cloudinaryV2 } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
 const { getPagingData, getPagination } = require("../utils/pagination");
 
-exports.uploadPhoto = async (req, res) => {
+exports.uploadPhoto = async (req, res, next) => {
   const upload = fileUpload(
     ["image/jpg", "image/jpeg", "image/png", "image/gif"],
     "photo"
@@ -17,7 +18,12 @@ exports.uploadPhoto = async (req, res) => {
         message: "Image could not be uploaded",
       });
     }
-
+    if (!req.file) {
+      return res.status(404).json({
+        status: "error",
+        message: "No image was uploaded",
+      });
+    }
     const { path } = req.file;
 
     const fName = req.file.originalname.split(".")[0];
@@ -46,7 +52,7 @@ exports.uploadPhoto = async (req, res) => {
           return res.status(201).json({
             status: "success",
             message: "Photo has been created",
-            audio: photoDb,
+            photo: photoDb,
           });
         } catch (error) {
           logger.error(
