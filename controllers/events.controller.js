@@ -144,15 +144,15 @@ exports.deleteBulkEvent = (req, res) => {
     .then(() =>
       res.status(200).json({
         status: "success",
-        message: "Event has been deleted",
+        message: "Events have been deleted",
       })
     )
     .catch((error) => {
       logger.error(
-        `(deleteBulkEvent) Event could not be deleted: ${error.message}`
+        `(deleteBulkEvent) Events could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Event was not deleted",
+        message: "Events were not deleted",
         status: "error",
       });
     });

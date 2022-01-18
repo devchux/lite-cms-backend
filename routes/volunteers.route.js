@@ -5,11 +5,16 @@ const {
   createVolunteers,
   deleteVolunteer,
   updateVolunteer,
+  deleteBulkVolunteers,
 } = require("../controllers/volunteers.controller");
 const { verifyAdmin } = require("../utils/verifyAdmin");
 const verifyToken = require("../utils/verifyToken");
 
-router.route("/").post(createVolunteers).get(verifyToken, getAllVolunteers);
+router
+  .route("/")
+  .post(createVolunteers)
+  .get(verifyToken, getAllVolunteers)
+  .delete(verifyToken, verifyAdmin, deleteBulkVolunteers);
 
 router
   .route("/:id")
