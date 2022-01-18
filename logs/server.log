@@ -38,3 +38,10 @@ error: Jan-11-2022 09:12:51: 	(getAllArticles) List of articles could not be fet
 error: Jan-11-2022 10:32:53: 	(updateArticle) Article could not be updated: Missing where attribute in the options parameter
 error: Jan-14-2022 23:24:27: 	(uploadPhoto) Multer Photo upload error: Multipart: Boundary not found
 error: Jan-15-2022 00:33:27: 	(uploadPhoto) Cloudinary Photo upload error: getaddrinfo ENOTFOUND api.cloudinary.com
+error: Jan-15-2022 11:40:54: 	(uploadPhoto) Cloudinary Photo upload error: connect ETIMEDOUT 54.85.181.242:443
+error: Jan-15-2022 11:57:30: 	(uploadPhoto) Cloudinary Photo upload error: connect ETIMEDOUT 54.210.129.78:443
+error: Jan-17-2022 13:12:58: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-17-2022 13:12:59: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-17-2022 13:13:37: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-17-2022 13:13:37: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-18-2022 12:27:50: 	(uploadPhoto) Cloudinary Photo upload error: getaddrinfo ENOTFOUND api.cloudinary.com

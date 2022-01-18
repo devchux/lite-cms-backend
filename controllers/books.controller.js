@@ -127,3 +127,26 @@ exports.deleteBook = async (req, res) => {
       });
     });
 }
+
+exports.deleteBulkBooks = async (req, res) => {
+  Book.destroy({
+    where: {
+      id: req.body.ids,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Books have been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteBulkBooks) Books could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Books were not deleted",
+        status: "error",
+      });
+    });
+}

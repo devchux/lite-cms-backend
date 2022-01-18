@@ -134,3 +134,26 @@ exports.deleteEvent = (req, res) => {
       });
     });
 }
+
+exports.deleteBulkEvent = (req, res) => {
+  Event.destroy({
+    where: {
+      id: req.body.ids,
+    },
+  })
+    .then(() =>
+      res.status(200).json({
+        status: "success",
+        message: "Event has been deleted",
+      })
+    )
+    .catch((error) => {
+      logger.error(
+        `(deleteBulkEvent) Event could not be deleted: ${error.message}`
+      );
+      return res.status(500).json({
+        message: "Event was not deleted",
+        status: "error",
+      });
+    });
+}

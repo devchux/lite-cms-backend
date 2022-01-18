@@ -4,12 +4,17 @@ const {
   getSingleBook,
   updateBook,
   deleteBook,
+  deleteBulkBooks,
 } = require("../controllers/books.controller");
 const { verifyAdmin } = require("../utils/verifyAdmin");
 const verifyToken = require("../utils/verifyToken");
 const router = require("express").Router();
 
-router.route("/").get(getAllBooks).post(verifyToken, addBook);
+router
+  .route("/")
+  .get(getAllBooks)
+  .post(verifyToken, addBook)
+  .delete(verifyToken, verifyAdmin, deleteBulkBooks);
 
 router
   .route("/:id")
