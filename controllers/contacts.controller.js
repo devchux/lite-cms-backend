@@ -17,7 +17,7 @@ exports.createContact = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -41,7 +41,7 @@ exports.getAllContacts = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -61,7 +61,7 @@ exports.getSingleContact = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -83,7 +83,7 @@ exports.deleteContact = async (req, res) => {
         `(deleteContact) Contact could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Contact was not deleted",
+        message: error.message,
         status: "error",
       });
     });

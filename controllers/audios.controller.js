@@ -61,7 +61,7 @@ exports.uploadAudio = (req, res) => {
               );
               return res.status(400).json({
                 status: "error",
-                message: "Audio could not be uploaded",
+                message: error.message,
               });
             }
           })
@@ -71,7 +71,7 @@ exports.uploadAudio = (req, res) => {
             );
             return res.status(400).json({
               status: "error",
-              message: "Audio could not be uploaded",
+              message: error.message,
             });
           });
       }
@@ -166,7 +166,7 @@ exports.deleteAudioFromDb = (req, res) => {
         `(deleteAudioFromDb) Audio could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Audio was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -195,7 +195,7 @@ exports.getAudios = async (req, res) => {
     logger.error(`(getAudios) Audios could not be fetched: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "Audios could not be fetched",
+      message: error.message,
     });
   }
 };
@@ -219,7 +219,7 @@ exports.getAudioSubjects = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -239,7 +239,7 @@ exports.getSingleAudioSubject = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -269,7 +269,7 @@ exports.updateAudioSubject = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -291,7 +291,7 @@ exports.deleteAudioSubject = (req, res) => {
         `(deleteAudioSubject) Audio collection could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Audio collection was not deleted",
+        message: error.message,
         status: "error",
       });
     });

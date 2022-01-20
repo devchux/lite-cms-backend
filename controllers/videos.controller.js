@@ -82,7 +82,7 @@ exports.deleteVideoFromDb = (req, res) => {
         `(deleteVideoFromDb) Video could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Video was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -137,7 +137,7 @@ exports.getVideoSubjects = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -157,7 +157,7 @@ exports.getSingleVideoSubject = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -187,7 +187,7 @@ exports.updateVideoSubject = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };

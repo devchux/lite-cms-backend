@@ -4,7 +4,7 @@ const logger = require("../utils/logger");
 const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createVolunteers = async (req, res) => {
-  const { name, email, phoneNumber, message } = req.body;
+  const { name, phoneNumber, message } = req.body;
   const user = await User.findOne({
     where: {
       phoneNumber,
@@ -18,7 +18,7 @@ exports.createVolunteers = async (req, res) => {
       status: "success",
     });
   }
-  User.create({ name, phoneNumber: phoneNumber.toString(), email })
+  User.create({ name, phoneNumber: phoneNumber.toString() })
     .then(async ({ id }) => {
       try {
         const newVolunteer = await Volunteer.create({ UserId: id, message });
@@ -34,7 +34,7 @@ exports.createVolunteers = async (req, res) => {
           `(createVolunteers) Volunteer was not registered: ${error.message}`
         );
         return res.status(500).json({
-          message: "An error occurred",
+          message: error.message,
           status: "error",
         });
       }
@@ -69,7 +69,7 @@ exports.getAllVolunteers = async (req, res) => {
       `(getAllVolunteers) List of volunteers could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred",
+      message: error.message,
       status: "error",
     });
   }
@@ -92,7 +92,7 @@ exports.getSingleVolunteer = async (req, res) => {
       `(getSingleVolunteer) Volunteer could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred while fetching volunteer",
+      message: error.message,
       status: "error",
     });
   }
@@ -115,7 +115,7 @@ exports.deleteVolunteer = async (req, res) => {
         `(deleteVolunteer) Volunteer could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Volunteer was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -138,7 +138,7 @@ exports.deleteBulkVolunteers = async (req, res) => {
         `(deleteBulkVolunteers) Volunteers could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Volunteers were not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -151,12 +151,11 @@ exports.updateVolunteer = async (req, res) => {
       status: "error",
       message: "Volunteer was not found",
     });
-  const { name, email, phoneNumber, message } = req.body;
+  const { name, phoneNumber, message } = req.body;
   const user = await User.findByPk(volunteer.UserId);
   user
     .update({
       name: name || user.name,
-      email: email || user.email,
       phoneNumber: phoneNumber || user.phoneNumber,
     })
     .then(async () => {
@@ -176,7 +175,7 @@ exports.updateVolunteer = async (req, res) => {
           `(updateVolunteer) Volunteer ${volunteer.id} could not be updated: ${error.message}`
         );
         return res.status(500).json({
-          message: "Volunteer was not updated",
+          message: error.message,
           status: "error",
         });
       }
@@ -186,7 +185,7 @@ exports.updateVolunteer = async (req, res) => {
         `(updateVolunteer) User ${user.id} could not be updated: ${error.message}`
       );
       return res.status(500).json({
-        message: "Volunteer was not updated",
+        message: error.message,
         status: "error",
       });
     });

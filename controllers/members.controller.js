@@ -7,126 +7,71 @@ const { jwtToken } = require("../config/constants");
 const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createMembers = async (req, res) => {
-  const { name, email, role, phoneNumber, password } = req.body;
-  try {
-    const user = await User.findOne({
-      where: {
-        email,
-      },
+  const { name, email, role, password } = req.body;
+  const user = await User.findOne({
+    where: {
+      email,
+    },
+  });
+  if (user) {
+    const member = await Member.findOne({
+      where: { UserId: user.id },
     });
-    if (user) {
-      const member = await Member.findOne({
-        where: { UserId: user.id },
+    if (member) {
+      logger.error(`(createMembers) Member already exist: ${user.id}`);
+      return res.status(403).json({
+        status: "error",
+        message: "Member already exist",
       });
-      if (member) {
-        logger.error(`(createMembers) Member already exist: ${user.id}`);
-        return res.status(403).json({
-          status: "error",
-          message: "Member already exist",
-        });
-      }
-      try {
-        const hashPassword = await bcrypt.hash(password, 10);
-        const newMember = await Member.create(
-          {
-            UserId: user.id,
-            role,
-            password: hashPassword,
-          },
-          { include: [User] }
-        );
-        if (!newMember) {
-          return res.status(500).json({
-            status: "error",
-            message: "An error occurred",
-          });
-        }
-        Member.findByPk(newMember.id, { include: User })
-          .then((member) => {
-            return res.status(201).json({
-              user: member,
-              status: "success",
-              message: "Member has been created",
-            });
-          })
-          .catch((error) => {
-            logger.error(
-              `(createMembers) Member could not be fetched after being saved: ${error.message}`
-            );
-            return res.status(500).json({
-              status: "error",
-              message: "An error occurred",
-            });
-          });
-      } catch (error) {
-        logger.error(
-          `(createMembers) Member could not be created: ${error.message}`
-        );
-        return res.status(500).json({
-          status: "error",
-          message: "An error occurred",
-        });
-      }
     }
-    User.create({ name, email, phoneNumber: phoneNumber.toString() })
-      .then(async ({ id }) => {
-        try {
-          const hashPassword = await bcrypt.hash(password, 10);
-          const newMember = await Member.create(
-            {
-              UserId: id,
-              role,
-              password: hashPassword,
-            },
-            { include: [User] }
-          );
-          if (!newMember) {
-            return res.status(500).json({
-              status: "error",
-              message: "An error occurred",
-            });
-          }
-          Member.findByPk(newMember.id, { include: User })
-            .then((member) => {
-              return res.status(201).json({
-                user: member,
-                status: "success",
-                message: "Member has been created",
-              });
-            })
-            .catch((error) => {
-              logger.error(
-                `(createMembers) Member could not be fetched after being saved: ${error.message}`
-              );
-              return res.status(500).json({
-                status: "error",
-                message: "An error occurred",
-              });
-            });
-        } catch (error) {
-          logger.error(
-            `(createMembers) Member could not be created: ${error.message}`
-          );
-          return res.status(500).json({
-            status: "error",
-            message: "An error occurred",
-          });
-        }
-      })
-      .catch((error) => {
-        logger.error(
-          `(createMembers) User could not be created: ${error.message}`
-        );
-        throw error;
+    try {
+      const hashPassword = await bcrypt.hash(password, 10);
+      const newMember = await Member.create({
+        UserId: user.id,
+        role,
+        password: hashPassword,
       });
-  } catch (error) {
-    logger.error(
-      `(createMembers) User could not be searched for: ${error.message}`
-    );
-    return res.status(500).json({
-      status: "error",
-      message: "An error occurred",
-    });
+      const getMember = await Member.findByPk(newMember.id, { include: User });
+      return res.status(201).json({
+        user: getMember,
+        status: "success",
+        message: "Member has been created",
+      });
+    } catch (error) {
+      logger.error(`(createMember) User was not created: ${error.message}`);
+      return res.status(500).json({
+        status: "error",
+        message: error.message,
+      });
+    }
+  } else {
+    try {
+      const newUser = await User.create({
+        name,
+        email,
+      });
+      const hashPassword = await bcrypt.hash(password, 10);
+      const newMember = await Member.create(
+        {
+          UserId: newUser.id,
+          role,
+          password: hashPassword,
+        },
+        { include: [User] }
+      );
+      const getMember = await Member.findByPk(newMember.id, { include: User });
+      return res.status(201).json({
+        user: getMember,
+        status: "success",
+        message: "Member has been created",
+      });
+    } catch (error) {
+      logger.error(`(createMember) User was not created: ${error.message}`);
+      return res.status(500).json({
+        status: "error",
+        message: error.message,
+      });
+    }
   }
 };
 
@@ -151,7 +96,7 @@ exports.getAllMembers = async (req, res) => {
     logger.error(`(getAllMembers) Users were not fetched: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error occurred while fetching Users",
+      message: error.message,
     });
   }
 };
@@ -174,7 +119,7 @@ exports.getSingleMember = async (req, res) => {
     logger.error(`(getSingleMember) User was not fetched: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error occurred while fetching User",
+      message: error.message,
     });
   }
 };
@@ -215,7 +160,7 @@ exports.updateMember = async (req, res) => {
           } catch (error) {
             return res.status(500).json({
               status: "error",
-              message: "User could not be updated",
+              message: error.message,
             });
           }
         } catch (error) {
@@ -224,7 +169,7 @@ exports.updateMember = async (req, res) => {
           );
           return res.status(500).json({
             status: "error",
-            message: "User could not be updated",
+            message: error.message,
           });
         }
       })
@@ -234,14 +179,14 @@ exports.updateMember = async (req, res) => {
         );
         return res.status(500).json({
           status: "error",
-          message: "User could not be updated",
+          message: error.message,
         });
       });
   } catch (error) {
     logger.error(`(updateMember) User could not be found: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error ocurred",
+      message: error.message,
     });
   }
 };
@@ -263,7 +208,7 @@ exports.deleteMember = async (req, res) => {
         `(deleteMember) Member could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Member was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -286,7 +231,7 @@ exports.deleteBulkMembers = async (req, res) => {
         `(deleteBulkMembers) Members could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Members were not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -334,7 +279,7 @@ exports.loginMember = async (req, res) => {
       `(loginMember) Member could not be logged in: ${error.message}`
     );
     return res.status(500).json({
-      message: "Member was not logged in",
+      message: error.message,
       status: "error",
     });
   }

@@ -23,7 +23,7 @@ exports.createEvent = async (req, res) => {
     logger.error(`(createEvent) Event could not be created: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "Event could not be created",
+      message: error.message,
     });
   }
 };
@@ -47,7 +47,7 @@ exports.getAllEvents = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "Events could not be fetched",
+      message: error.message,
     });
   }
 };
@@ -73,7 +73,7 @@ exports.getSingleEvent = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "Event could not be fetched",
+      message: error.message,
     });
   }
 };
@@ -107,7 +107,7 @@ exports.updateEvent = async (req, res) => {
     logger.error(`(updateEvent) Event could not be updated: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "Event could not be updated",
+      message: error.message,
     });
   }
 };
@@ -129,7 +129,7 @@ exports.deleteEvent = (req, res) => {
         `(deleteEvent) Event could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Event was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -152,7 +152,7 @@ exports.deleteBulkEvent = (req, res) => {
         `(deleteBulkEvent) Events could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Events were not deleted",
+        message: error.message,
         status: "error",
       });
     });

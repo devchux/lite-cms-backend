@@ -107,7 +107,7 @@ exports.deletePhoto = (req, res) => {
         `(deletePhoto) Photo could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Photo was not deleted",
+        message: error.message,
         status: "error",
       });
     });

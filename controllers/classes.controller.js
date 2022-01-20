@@ -20,7 +20,7 @@ exports.createClass = async (req, res) => {
     logger.error(`(createClass) Class could not be created: ${error.message}`);
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -50,7 +50,7 @@ exports.findUserByClass = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -74,7 +74,7 @@ exports.findAndCountAllClasses = async (req, res) => {
     );
     return res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -96,7 +96,7 @@ exports.deleteClass = async (req, res) => {
         `(deleteClass) Class could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Class was not deleted",
+        message: error.message,
         status: "error",
       });
     });

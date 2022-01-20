@@ -26,7 +26,7 @@ exports.getAllArticles = async (req, res) => {
       `(getAllArticles) List of articles could not be fetched: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred",
+      message: error.message,
       status: "error",
     });
   }
@@ -72,7 +72,7 @@ exports.findArticleById = async (req, res) => {
       `(findArticleById) Article could not be found: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred",
+      message: error.message,
       status: "error",
     });
   }
@@ -95,7 +95,7 @@ exports.findArticleBySlug = async (req, res) => {
       `(findArticleBySlug) Article could not be found: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred",
+      message: error.message,
       status: "error",
     });
   }
@@ -137,7 +137,7 @@ exports.updateArticle = async (req, res) => {
       `(updateArticle) Article could not be updated: ${error.message}`
     );
     return res.status(500).json({
-      message: "An error occurred",
+      message: error.message,
       status: "error",
     });
   }
@@ -160,7 +160,7 @@ exports.deleteArticle = (req, res) => {
         `(deleteArticle) Article could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Article was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -183,7 +183,7 @@ exports.deleteArticles = (req, res) => {
         `(deleteArticles) Articles could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Articles were not deleted",
+        message: error.message,
         status: "error",
       });
     });

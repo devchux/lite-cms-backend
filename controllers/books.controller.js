@@ -22,7 +22,7 @@ exports.addBook = async (req, res) => {
     logger.error(`(addBook) Books could not be created: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -44,7 +44,7 @@ exports.getAllBooks = async (req, res) => {
     logger.error(`(getAllBooks) Books could not be fetched: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -67,7 +67,7 @@ exports.getSingleBook = async (req, res) => {
     logger.error(`(getSingleBook) Book could not be fetched: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -100,7 +100,7 @@ exports.updateBook = async (req, res) => {
     logger.error(`(updateBook) Book could not be updated: ${error.message}`);
     res.status(500).json({
       status: "error",
-      message: "An error occurred",
+      message: error.message,
     });
   }
 };
@@ -122,7 +122,7 @@ exports.deleteBook = async (req, res) => {
         `(deleteBook) Book could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Book was not deleted",
+        message: error.message,
         status: "error",
       });
     });
@@ -145,7 +145,7 @@ exports.deleteBulkBooks = async (req, res) => {
         `(deleteBulkBooks) Books could not be deleted: ${error.message}`
       );
       return res.status(500).json({
-        message: "Books were not deleted",
+        message: error.message,
         status: "error",
       });
     });
