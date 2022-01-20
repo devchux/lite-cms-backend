@@ -47,12 +47,12 @@ exports.createMembers = async (req, res) => {
   } else {
     try {
       const newUser = await User.create({
-        name,
         email,
       });
       const hashPassword = await bcrypt.hash(password, 10);
       const newMember = await Member.create(
         {
+          name,
           UserId: newUser.id,
           role,
           password: hashPassword,
@@ -136,7 +136,6 @@ exports.updateMember = async (req, res) => {
     const user = await User.findOne({ where: { id: member.UserId } });
     user
       .update({
-        name: name || user.name,
         email: email || user.email,
         phoneNumber: phoneNumber || user.phoneNumber,
       })
@@ -144,6 +143,7 @@ exports.updateMember = async (req, res) => {
         try {
           const hashPassword = await bcrypt.hash(password, 10);
           const updateMember = await member.update({
+            name: name || member.name,
             role: role || member.role,
             password: hashPassword || member.password,
           });

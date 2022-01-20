@@ -18,10 +18,14 @@ exports.createVolunteers = async (req, res) => {
       status: "success",
     });
   }
-  User.create({ name, phoneNumber: phoneNumber.toString() })
+  User.create({ phoneNumber: phoneNumber.toString() })
     .then(async ({ id }) => {
       try {
-        const newVolunteer = await Volunteer.create({ UserId: id, message });
+        const newVolunteer = await Volunteer.create({
+          name,
+          UserId: id,
+          message,
+        });
         logger.info(`Volunteer ${newVolunteer.id} has been created`);
 
         return res.status(201).json({
@@ -55,9 +59,13 @@ exports.getAllVolunteers = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const volunteers = await Volunteer.findAndCountAll({ include: User, limit, offset });
+    const volunteers = await Volunteer.findAndCountAll({
+      include: User,
+      limit,
+      offset,
+    });
 
-    const data = getPagingData(volunteers, page, limit)
+    const data = getPagingData(volunteers, page, limit);
 
     return res.status(200).json({
       volunteers: data,
@@ -151,17 +159,18 @@ exports.updateVolunteer = async (req, res) => {
       status: "error",
       message: "Volunteer was not found",
     });
-  const { name, phoneNumber, message } = req.body;
+  const { name, phoneNumber, email, message } = req.body;
   const user = await User.findByPk(volunteer.UserId);
   user
     .update({
-      name: name || user.name,
       phoneNumber: phoneNumber || user.phoneNumber,
+      email: email || user.email,
     })
     .then(async () => {
       try {
         const updatedVolunteer = await volunteer.update({
           message: message || volunteer.message,
+          name: name || member.name,
         });
         logger.info(`Volunteer ${updatedVolunteer.id} has been updated`);
 

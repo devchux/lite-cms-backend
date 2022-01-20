@@ -8,6 +8,11 @@ const VolunteerSchema = {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: false,
+  },
   message: {
     type: DataTypes.TEXT,
     allowNull: true,
