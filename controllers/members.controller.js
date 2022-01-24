@@ -27,6 +27,7 @@ exports.createMembers = async (req, res) => {
     try {
       const hashPassword = await bcrypt.hash(password, 10);
       const newMember = await Member.create({
+        name,
         UserId: user.id,
         role,
         password: hashPassword,

@@ -1,5 +1,5 @@
 const Photo = require("../models/photos.model");
-const fs = require('fs')
+const fs = require("fs");
 const { fileUpload, cloudinaryV2 } = require("../utils/fileUpload");
 const logger = require("../utils/logger");
 const { getPagingData, getPagination } = require("../utils/pagination");
@@ -15,7 +15,7 @@ exports.uploadPhoto = async (req, res, next) => {
       logger.error(`(uploadPhoto) Multer Photo upload error: ${err.message}`);
       return res.status(400).json({
         status: "error",
-        message: "Image could not be uploaded",
+        message: err.message,
       });
     }
     if (!req.file) {
@@ -74,7 +74,7 @@ exports.getAllPhotos = async (req, res) => {
   try {
     const photos = await Photo.findAndCountAll({ offset, limit });
 
-    const data = getPagingData(photos, page, limit)
+    const data = getPagingData(photos, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -82,7 +82,9 @@ exports.getAllPhotos = async (req, res) => {
       photos: data,
     });
   } catch (error) {
-    logger.error(`(getAllPhotos) Photos could not be fetched: ${error.message}`);
+    logger.error(
+      `(getAllPhotos) Photos could not be fetched: ${error.message}`
+    );
     return res.status(400).json({
       status: "error",
       message: "Photos could not be fetched",

@@ -11,7 +11,11 @@ exports.createVolunteers = async (req, res) => {
     },
   });
   if (user) {
-    const newVolunteer = await Volunteer.create({ UserId: user.id, message });
+    const newVolunteer = await Volunteer.create({
+      UserId: user.id,
+      message,
+      name,
+    });
     return res.status(201).json({
       volunter: newVolunteer,
       message: "You are now a volunteer",

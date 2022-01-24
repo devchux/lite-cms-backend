@@ -1,14 +1,15 @@
 const Class = require("../models/classes.model");
+const logger = require("../utils/logger");
 const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.createClass = async (req, res) => {
-  const { name, email, phoneNumber, title } = req.body;
+  const { name, email, phoneNumber, classTitle } = req.body;
   try {
     const userClass = await Class.create({
       name,
       email,
       phoneNumber,
-      class: title,
+      classTitle,
     });
 
     return res.status(201).json({
@@ -31,7 +32,7 @@ exports.findUserByClass = async (req, res) => {
   try {
     const classes = await Class.findAndCountAll({
       where: {
-        class: req.params.title,
+        classTitle: req.params.title,
       },
       limit,
       offset,

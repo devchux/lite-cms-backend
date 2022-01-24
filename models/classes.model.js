@@ -8,7 +8,7 @@ const ClassSchema = {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true,
   },
-  class: {
+  classTitle: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -19,7 +19,6 @@ const ClassSchema = {
   email: {
     type: DataTypes.STRING,
     allowNull: true,
-    unique: true,
     validate: {
       is: /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i,
       isEmail: true,
@@ -28,7 +27,6 @@ const ClassSchema = {
   phoneNumber: {
     type: DataTypes.STRING,
     allowNull: true,
-    unique: true,
   }
 };
 
