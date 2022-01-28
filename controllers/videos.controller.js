@@ -5,19 +5,20 @@ const { getPagination, getPagingData } = require("../utils/pagination");
 
 exports.uploadVideo = (req, res) => {
   const { title, videoDescription, videoTitle, videoUrl, slug } = req.body;
-  VideoSubject.create({ title }).then(async ({ id }) => {
+  VideoSubject.create({ title }).then(async (subject) => {
     try {
       const videoDb = await Video.create({
         videoUrl,
         slug,
-        SubjectId: id,
-        UserId: req.user.userId,
+        VideoSubjectId: subject.id,
+        MemberId: req.user.userId,
         title: videoTitle,
         description: videoDescription,
       });
       return res.status(201).json({
         status: "success",
         message: "Video has been created",
+        subject,
         video: videoDb,
       });
     } catch (error) {
@@ -43,8 +44,8 @@ exports.uploadMoreVideos = async (req, res) => {
   try {
     const videoDb = await Video.create({
       videoUrl: req.body.videoUrl,
-      SubjectId: subject.id,
-      UserId: req.user.userId,
+      VideoSubjectId: subject.id,
+      MemberId: req.user.userId,
       slug: req.body.slug,
       title: req.body.videoTitle,
       description: req.body.videoDescription,
@@ -52,6 +53,7 @@ exports.uploadMoreVideos = async (req, res) => {
     return res.status(201).json({
       status: "success",
       message: "Video has been created",
+      subject,
       video: videoDb,
     });
   } catch (error) {
@@ -100,7 +102,7 @@ exports.getAllVideos = async (req, res) => {
       offset,
     });
 
-    const data = getPagingData(videos, page, limt);
+    const data = getPagingData(videos, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -172,9 +174,16 @@ exports.updateVideoSubject = async (req, res) => {
         message: "Subject does not exist",
       });
 
-    const newSubject = await VideoSubject.update({
+    const newSubject = await subject.update({
       title: req.body.title || subject.title,
     });
+
+    await Video.update(
+      { slug: req.body.slug },
+      { where: { VideoSubjectId: newSubject.id } }
+    );
+
+    // await videos.update({ slug: req.body.slug })
 
     return res.status(200).json({
       status: "success",

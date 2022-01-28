@@ -35,3 +35,26 @@ error: Jan-24-2022 01:36:11: 	(createClass) Class could not be created: notNull 
 error: Jan-24-2022 01:38:08: 	(createClass) Class could not be created: Validation error
 error: Jan-24-2022 01:38:12: 	(createClass) Class could not be created: Validation error
 error: Jan-24-2022 01:39:21: 	(createClass) Class could not be created: Validation error
+error: Jan-25-2022 00:57:32: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-25-2022 00:57:48: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-25-2022 00:58:46: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-25-2022 09:22:32: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-26-2022 02:09:40: 	(updateVideoSubject) Video subject could not be updated: Missing where attribute in the options parameter
+error: Jan-26-2022 02:26:45: 	(updateVideoSubject) Video subject could not be updated: Unknown column 'Video.SubjectId' in 'where clause'
+error: Jan-26-2022 02:33:55: 	(updateVideoSubject) Video subject could not be updated: videos.update is not a function
+error: Jan-26-2022 02:35:59: 	(updateVideoSubject) Video subject could not be updated: Missing where attribute in the options parameter
+error: Jan-27-2022 22:10:32: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:10:50: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:37:42: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:42:33: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:42:46: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:43:56: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:51:34: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:53:43: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:55:23: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:55:38: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:55:57: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:56:18: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 22:56:57: 	(getAllVideos) Videos could not be fetched: WHERE parameter "slug" has invalid "undefined" value
+error: Jan-27-2022 23:03:14: 	(getAllVideos) Videos could not be fetched: limt is not defined
+error: Jan-27-2022 23:06:29: 	(getAllVideos) Videos could not be fetched: limt is not defined
