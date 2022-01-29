@@ -183,8 +183,6 @@ exports.updateVideoSubject = async (req, res) => {
       { where: { VideoSubjectId: newSubject.id } }
     );
 
-    // await videos.update({ slug: req.body.slug })
-
     return res.status(200).json({
       status: "success",
       message: "Video subject have been fetched",

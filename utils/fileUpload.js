@@ -39,7 +39,6 @@ exports.fileUpload = (fileFormat, fileType) => {
     storage,
     limits: {
       fieldNameSize: 200,
-      fileSize: 5 * 1024 * 1024,
     },
     fileFilter,
   }).single(fileType);

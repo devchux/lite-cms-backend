@@ -13,7 +13,7 @@ exports.uploadAudio = (req, res) => {
       logger.error(`(uploadAudio) Multer Audio upload error: ${err.message}`);
       return res.status(400).json({
         status: "error",
-        message: "Audio could not be uploaded",
+        message: err.message,
       });
     }
 
@@ -45,8 +45,8 @@ exports.uploadAudio = (req, res) => {
               const audioDb = await Audio.create({
                 slug,
                 audioUrl: audio.secure_url,
-                SubjectId: id,
-                UserId: req.user.userId,
+                AudioSubjectId: id,
+                MemberId: req.user.userId,
                 title: audioTitle,
                 description: audioDescription,
               });
@@ -124,9 +124,9 @@ exports.uploadMoreAudio = async (req, res) => {
         try {
           const audioDb = await Audio.create({
             audioUrl: audio.secure_url,
-            SubjectId: subject.id,
+            AudioSubjectId: subject.id,
             slug: req.body.slug,
-            UserId: req.user.userId,
+            MemberId: req.user.userId,
             title: req.body.audioTitle,
             description: req.body.audioDescription,
           });
@@ -254,9 +254,14 @@ exports.updateAudioSubject = async (req, res) => {
         message: "Subject does not exist",
       });
 
-    const newSubject = await AudioSubject.update({
+    const newSubject = await subject.update({
       title: req.body.title || subject.title,
     });
+
+    await Audio.update(
+      { slug: req.body.slug },
+      { where: { AudioSubjectId: newSubject.id } }
+    );
 
     return res.status(200).json({
       status: "success",

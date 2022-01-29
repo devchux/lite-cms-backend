@@ -16,13 +16,13 @@ router.route("/").post(verifyToken, uploadVideo);
 router.route("/list/:slug").get(getAllVideos)
 router.route("/subjects").get(getVideoSubjects);
 router
+  .route("/:id")
+  .post(verifyToken, uploadMoreVideos)
+  .delete(verifyToken, verifyAdmin, deleteVideoFromDb);
+router
   .route("/subjects/:id")
   .get(getSingleVideoSubject)
   .put(verifyToken, updateVideoSubject)
   .delete(verifyToken, verifyAdmin, deleteVideoSubject);
-router
-  .route("/:id")
-  .post(verifyToken, uploadMoreVideos)
-  .delete(verifyToken, verifyAdmin, deleteVideoFromDb);
 
 module.exports = router;
