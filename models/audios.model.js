@@ -21,6 +21,10 @@ const AudioSchema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  publicId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   description: {
     type: DataTypes.TEXT,
     allowNull: true,

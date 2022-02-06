@@ -47,6 +47,7 @@ exports.uploadPhoto = async (req, res, next) => {
         fs.unlinkSync(path);
         try {
           const photoDb = await Photo.create({
+            publicId: photo.public_id,
             photoUrl: photo.secure_url,
           });
           return res.status(201).json({
@@ -92,25 +93,24 @@ exports.getAllPhotos = async (req, res) => {
   }
 };
 
-exports.deletePhoto = (req, res) => {
-  Photo.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then(() =>
-      res.status(200).json({
-        status: "success",
-        message: "Photo has been deleted",
-      })
-    )
-    .catch((error) => {
-      logger.error(
-        `(deletePhoto) Photo could not be deleted: ${error.message}`
-      );
-      return res.status(500).json({
-        message: error.message,
-        status: "error",
-      });
+exports.deletePhoto = async (req, res) => {
+  try {
+    const photo = await Photo.findByPk(req.params.id)
+    await cloudinaryV2.uploader.destroy(photo.public_id)
+    await photo.destroy()
+    
+    
+    res.status(200).json({
+      status: "success",
+      message: "Photo has been deleted",
+    })
+  } catch (error) {
+    logger.error(
+      `(deletePhoto) Photo could not be deleted: ${error.message}`
+    );
+    return res.status(500).json({
+      message: error.message,
+      status: "error",
     });
+  }
 };

@@ -1,0 +1,12 @@
+error: Jan-31-2022 23:55:53: 	Unable to connect to the database: connect ECONNREFUSED 127.0.0.1:3306
+error: Jan-31-2022 23:55:53: 	Database could not be synchronized: connect ECONNREFUSED 127.0.0.1:3306
+error: Feb-01-2022 00:17:48: 	(getAllArticles) List of articles could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 03:44:21: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 03:44:22: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 21:48:17: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 21:48:18: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 21:49:13: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-01-2022 21:49:34: 	(getAllBooks) Books could not be fetched: Undeclared variable: NaN
+error: Feb-03-2022 19:20:12: 	(uploadAudio) Audio could not be registered in database: audi is not defined
+error: Feb-05-2022 17:10:56: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter
+error: Feb-05-2022 17:11:02: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter

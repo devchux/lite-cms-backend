@@ -32,6 +32,35 @@ exports.getAllArticles = async (req, res) => {
   }
 };
 
+exports.getPublishedArticles = async (req, res) => {
+  const { page, size } = req.query;
+  const { limit, offset } = getPagination(page, size);
+  try {
+    const articles = await Article.findAndCountAll({
+      where: { published: true },
+      include: [{ model: Member, include: User }],
+      limit,
+      offset,
+    });
+
+    const data = getPagingData(articles, page, limit);
+
+    return res.status(200).json({
+      articles: data,
+      message: "Here are the list of articles",
+      status: "success",
+    });
+  } catch (error) {
+    logger.error(
+      `(getAllArticles) List of articles could not be fetched: ${error.message}`
+    );
+    return res.status(500).json({
+      message: error.message,
+      status: "error",
+    });
+  }
+};
+
 exports.createArticle = async (req, res) => {
   const { title, body, imageUrl, slug, published } = req.body;
   try {
@@ -81,6 +110,7 @@ exports.findArticleById = async (req, res) => {
 exports.findArticleBySlug = async (req, res) => {
   try {
     const article = await Article.findOne({
+      include: [{ model: Member, include: User }],
       where: {
         slug: req.params.slug,
       },

@@ -11,6 +11,10 @@ const PhotoSchema = {
     type: DataTypes.STRING,
     allowNull: false,
   },
+  publicId: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
 };
 
 const Photo = sequelize.define("Photo", PhotoSchema, { timestamps: true });

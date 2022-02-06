@@ -89,7 +89,7 @@ exports.updateEvent = async (req, res) => {
         message: "Event could not be found",
       });
 
-    const newEvent = await Event.update({
+    const newEvent = await event.update({
       title: title || event.title,
       description: description || event.description,
       imageUrl: imageUrl || event.imageUrl,

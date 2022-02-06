@@ -6,6 +6,7 @@ const {
   deleteArticle,
   findArticleBySlug,
   deleteArticles,
+  getPublishedArticles,
 } = require("../controllers/articles.controller");
 const { verifyAdmin } = require("../utils/verifyAdmin");
 const verifyToken = require("../utils/verifyToken");
@@ -17,11 +18,12 @@ router
   .get(getAllArticles)
   .post(verifyToken, createArticle)
   .delete(verifyToken, deleteArticles);
+router.route('/published').get(getPublishedArticles)
+router.route("/slug/:slug").get(findArticleBySlug);
 router
   .route("/:id")
   .get(verifyToken, findArticleById)
   .put(verifyToken, updateArticle)
   .delete(verifyToken, verifyAdmin, deleteArticle);
-router.route("/slug/:slug").get(findArticleBySlug);
 
 module.exports = router;

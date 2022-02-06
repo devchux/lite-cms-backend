@@ -4,7 +4,7 @@ const logger = require("../utils/logger");
 const { getPagingData, getPagination } = require("../utils/pagination");
 
 exports.createVolunteers = async (req, res) => {
-  const { name, phoneNumber, message } = req.body;
+  const { name, email, phoneNumber, message } = req.body;
   const user = await User.findOne({
     where: {
       phoneNumber,
@@ -22,7 +22,7 @@ exports.createVolunteers = async (req, res) => {
       status: "success",
     });
   }
-  User.create({ phoneNumber: phoneNumber.toString() })
+  User.create({ phoneNumber: phoneNumber.toString(), email })
     .then(async ({ id }) => {
       try {
         const newVolunteer = await Volunteer.create({

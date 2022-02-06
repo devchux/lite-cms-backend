@@ -44,6 +44,7 @@ exports.uploadAudio = (req, res) => {
             try {
               const audioDb = await Audio.create({
                 slug,
+                publicId: audio.public_id,
                 audioUrl: audio.secure_url,
                 AudioSubjectId: id,
                 MemberId: req.user.userId,
@@ -123,6 +124,7 @@ exports.uploadMoreAudio = async (req, res) => {
         fs.unlinkSync(path);
         try {
           const audioDb = await Audio.create({
+            publicId: audio.public_id,
             audioUrl: audio.secure_url,
             AudioSubjectId: subject.id,
             slug: req.body.slug,
@@ -149,27 +151,25 @@ exports.uploadMoreAudio = async (req, res) => {
   });
 };
 
-exports.deleteAudioFromDb = (req, res) => {
-  Audio.destroy({
-    where: {
-      id: req.params.id,
-    },
-  })
-    .then(() =>
-      res.status(200).json({
-        status: "success",
-        message: "Audio has been deleted",
-      })
-    )
-    .catch((error) => {
-      logger.error(
-        `(deleteAudioFromDb) Audio could not be deleted: ${error.message}`
-      );
-      return res.status(500).json({
-        message: error.message,
-        status: "error",
-      });
+exports.deleteAudioFromDb = async (req, res) => {
+  try {
+    const audio = await Audio.findByPk(req.params.id)
+    await cloudinaryV2.uploader.destroy(audio.public_id, { resource_type: "video" })
+    await audio.destroy()
+    
+    res.status(200).json({
+      status: "success",
+      message: "Audio has been deleted",
+    })
+  } catch (error) {
+    logger.error(
+      `(deleteAudioFromDb) Audio could not be deleted: ${error.message}`
+    );
+    return res.status(500).json({
+      message: error.message,
+      status: "error",
     });
+  }
 };
 
 exports.getAudios = async (req, res) => {
