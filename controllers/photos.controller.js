@@ -73,7 +73,11 @@ exports.getAllPhotos = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const photos = await Photo.findAndCountAll({ offset, limit });
+    const photos = await Photo.findAndCountAll({
+      offset,
+      limit,
+      order: [["updatedAt", "DESC"]],
+    });
 
     const data = getPagingData(photos, page, limit);
 
@@ -95,19 +99,16 @@ exports.getAllPhotos = async (req, res) => {
 
 exports.deletePhoto = async (req, res) => {
   try {
-    const photo = await Photo.findByPk(req.params.id)
-    await cloudinaryV2.uploader.destroy(photo.public_id)
-    await photo.destroy()
-    
-    
+    const photo = await Photo.findByPk(req.params.id);
+    await cloudinaryV2.uploader.destroy(photo.public_id);
+    await photo.destroy();
+
     res.status(200).json({
       status: "success",
       message: "Photo has been deleted",
-    })
+    });
   } catch (error) {
-    logger.error(
-      `(deletePhoto) Photo could not be deleted: ${error.message}`
-    );
+    logger.error(`(deletePhoto) Photo could not be deleted: ${error.message}`);
     return res.status(500).json({
       message: error.message,
       status: "error",

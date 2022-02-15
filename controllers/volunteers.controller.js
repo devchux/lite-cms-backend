@@ -67,6 +67,7 @@ exports.getAllVolunteers = async (req, res) => {
       include: User,
       limit,
       offset,
+      order: [['updatedAt', 'DESC']],
     });
 
     const data = getPagingData(volunteers, page, limit);

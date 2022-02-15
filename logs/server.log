@@ -10,3 +10,4 @@ error: Feb-01-2022 21:49:34: 	(getAllBooks) Books could not be fetched: Undeclar
 error: Feb-03-2022 19:20:12: 	(uploadAudio) Audio could not be registered in database: audi is not defined
 error: Feb-05-2022 17:10:56: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter
 error: Feb-05-2022 17:11:02: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter
+info: Feb-15-2022 02:38:45: 	Volunteer c2c78b35-f09b-45d6-97a3-512da169090e has been created

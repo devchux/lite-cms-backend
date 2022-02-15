@@ -26,9 +26,13 @@ exports.getAllContacts = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const contacts = await Contact.findAndCountAll({ limit, offset });
+    const contacts = await Contact.findAndCountAll({
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+    });
 
-    const data = getPagingData(contacts, page, limit)
+    const data = getPagingData(contacts, page, limit);
 
     return res.status(200).json({
       status: "success",

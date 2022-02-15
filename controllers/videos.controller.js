@@ -100,6 +100,7 @@ exports.getAllVideos = async (req, res) => {
       },
       limit,
       offset,
+      order: [["updatedAt", "DESC"]],
     });
 
     const data = getPagingData(videos, page, limit);
@@ -124,7 +125,11 @@ exports.getVideoSubjects = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const subjects = await VideoSubject.findAndCountAll({ limit, offset });
+    const subjects = await VideoSubject.findAndCountAll({
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+    });
 
     const data = getPagingData(subjects, page, limit);
 

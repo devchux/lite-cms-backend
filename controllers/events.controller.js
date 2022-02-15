@@ -32,9 +32,13 @@ exports.getAllEvents = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const events = await Event.findAndCountAll({ limit, offset });
+    const events = await Event.findAndCountAll({
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+    });
 
-    const data = getPagingData(events, page, limit)
+    const data = getPagingData(events, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -133,7 +137,7 @@ exports.deleteEvent = (req, res) => {
         status: "error",
       });
     });
-}
+};
 
 exports.deleteBulkEvent = (req, res) => {
   Event.destroy({
@@ -156,4 +160,4 @@ exports.deleteBulkEvent = (req, res) => {
         status: "error",
       });
     });
-}
+};

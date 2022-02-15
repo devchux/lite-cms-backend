@@ -31,9 +31,13 @@ exports.getAllBooks = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const books = await Book.findAndCountAll({ limit, offset });
+    const books = await Book.findAndCountAll({
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+    });
 
-    const data = getPagingData(books, page, limit)
+    const data = getPagingData(books, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -118,15 +122,13 @@ exports.deleteBook = async (req, res) => {
       })
     )
     .catch((error) => {
-      logger.error(
-        `(deleteBook) Book could not be deleted: ${error.message}`
-      );
+      logger.error(`(deleteBook) Book could not be deleted: ${error.message}`);
       return res.status(500).json({
         message: error.message,
         status: "error",
       });
     });
-}
+};
 
 exports.deleteBulkBooks = async (req, res) => {
   Book.destroy({
@@ -149,4 +151,4 @@ exports.deleteBulkBooks = async (req, res) => {
         status: "error",
       });
     });
-}
+};

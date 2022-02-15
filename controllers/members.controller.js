@@ -84,6 +84,7 @@ exports.getAllMembers = async (req, res) => {
       include: User,
       limit,
       offset,
+      order: [['updatedAt', 'DESC']],
     });
 
     const data = getPagingData(users, page, limit);

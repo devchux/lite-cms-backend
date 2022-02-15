@@ -34,11 +34,12 @@ exports.findUserByClass = async (req, res) => {
       where: {
         classTitle: req.params.title,
       },
+      order: [["updatedAt", "DESC"]],
       limit,
       offset,
     });
 
-    const data = getPagingData(classes, page, limit)
+    const data = getPagingData(classes, page, limit);
 
     return res.status(200).json({
       status: "success",
@@ -60,7 +61,11 @@ exports.findAndCountAllClasses = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const classes = await Class.findAndCountAll({ limit, offset });
+    const classes = await Class.findAndCountAll({
+      limit,
+      offset,
+      order: [["updatedAt", "DESC"]],
+    });
 
     const data = getPagingData(classes, page, limit);
 

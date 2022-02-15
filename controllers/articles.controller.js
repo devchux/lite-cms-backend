@@ -10,6 +10,7 @@ exports.getAllArticles = async (req, res) => {
   try {
     const articles = await Article.findAndCountAll({
       include: [{ model: Member, include: User }],
+      order: [['updatedAt', 'DESC']],
       limit,
       offset,
     });
@@ -39,6 +40,7 @@ exports.getPublishedArticles = async (req, res) => {
     const articles = await Article.findAndCountAll({
       where: { published: true },
       include: [{ model: Member, include: User }],
+      order: [['updatedAt', 'DESC']],
       limit,
       offset,
     });

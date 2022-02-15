@@ -153,14 +153,16 @@ exports.uploadMoreAudio = async (req, res) => {
 
 exports.deleteAudioFromDb = async (req, res) => {
   try {
-    const audio = await Audio.findByPk(req.params.id)
-    await cloudinaryV2.uploader.destroy(audio.public_id, { resource_type: "video" })
-    await audio.destroy()
-    
+    const audio = await Audio.findByPk(req.params.id);
+    await cloudinaryV2.uploader.destroy(audio.public_id, {
+      resource_type: "video",
+    });
+    await audio.destroy();
+
     res.status(200).json({
       status: "success",
       message: "Audio has been deleted",
-    })
+    });
   } catch (error) {
     logger.error(
       `(deleteAudioFromDb) Audio could not be deleted: ${error.message}`
@@ -180,6 +182,7 @@ exports.getAudios = async (req, res) => {
       where: {
         slug: req.params.slug,
       },
+      order: [["updatedAt", "DESC"]],
       limit,
       offset,
     });
@@ -204,9 +207,13 @@ exports.getAudioSubjects = async (req, res) => {
   const { page, size } = req.query;
   const { limit, offset } = getPagination(page, size);
   try {
-    const subjects = await AudioSubject.findAndCountAll({ offset, limit });
+    const subjects = await AudioSubject.findAndCountAll({
+      offset,
+      limit,
+      order: [["updatedAt", "DESC"]],
+    });
 
-    const data = getPagingData(subjects, page, limit)
+    const data = getPagingData(subjects, page, limit);
 
     return res.status(200).json({
       status: "success",
