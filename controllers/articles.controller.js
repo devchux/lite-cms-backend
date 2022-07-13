@@ -10,7 +10,7 @@ exports.getAllArticles = async (req, res) => {
   try {
     const articles = await Article.findAndCountAll({
       include: [{ model: Member, include: User }],
-      order: [['updatedAt', 'DESC']],
+      order: [["updatedAt", "DESC"]],
       limit,
       offset,
     });
@@ -40,7 +40,7 @@ exports.getPublishedArticles = async (req, res) => {
     const articles = await Article.findAndCountAll({
       where: { published: true },
       include: [{ model: Member, include: User }],
-      order: [['updatedAt', 'DESC']],
+      order: [["updatedAt", "DESC"]],
       limit,
       offset,
     });
@@ -147,11 +147,14 @@ exports.updateArticle = async (req, res) => {
         message: "Article could not be found",
       });
 
-    if (article.MemberId !== req.user.userId || req.user.role !== "admin")
-      return res.status(403).json({
-        status: "error",
-        message: "You are not authorized to perform this action",
-      });
+    if (article.MemberId !== req.user.userId) {
+      if (req.user.role !== "admin") {
+        return res.status(403).json({
+          status: "error",
+          message: "You are not authorized to perform this action",
+        });
+      }
+    }
     const updatedArticle = await article.update({
       title: title || article.title,
       body: body || article.body,
