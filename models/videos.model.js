@@ -1,4 +1,4 @@
-const { DataTypes } = require("sequelize/dist");
+const { DataTypes } = require("sequelize");
 const sequelize = require("../config/db");
 const Member = require("./members.model");
 const VideoSubject = require("./video-subject.model");

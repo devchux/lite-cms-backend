@@ -11,3 +11,23 @@ error: Feb-03-2022 19:20:12: 	(uploadAudio) Audio could not be registered in dat
 error: Feb-05-2022 17:10:56: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter
 error: Feb-05-2022 17:11:02: 	(updateEvent) Event could not be updated: Missing where attribute in the options parameter
 info: Feb-15-2022 02:38:45: 	Volunteer c2c78b35-f09b-45d6-97a3-512da169090e has been created
+error: Jul-08-2022 19:59:36: 	Unable to connect to the database: getaddrinfo ENOTFOUND postgres://ylzupinwqdfmmf:e84ea445457821a3efcd358ad69686d33c9614c1d6687fd17fa91839001bc239@ec2-34-239-241-121.compute-1.amazonaws.com:5432/ddflmojmatb00m
+error: Jul-08-2022 22:51:48: 	Unable to connect to the database: the database system is starting up
+error: Jul-08-2022 22:55:32: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.34.106", user "user", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 22:55:40: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.34.106", user "user", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 22:59:13: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.34.169", user "user", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 22:59:26: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.33.192", user "user", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 23:01:43: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.33.5", user "ylzupinwqdfmmf", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 23:05:14: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.34.106", user "ylzupinwqdfmmf", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 23:06:31: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.33.192", user "ylzupinwqdfmmf", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 23:06:41: 	Unable to connect to the database: no pg_hba.conf entry for host "102.89.34.106", user "ylzupinwqdfmmf", database "ddflmojmatb00m", no encryption
+error: Jul-08-2022 23:12:12: 	Unable to connect to the database: self signed certificate
+error: Jul-13-2022 13:16:54: 	(getAllArticles) List of articles could not be fetched: getaddrinfo ENOTFOUND ec2-34-239-241-121.compute-1.amazonaws.com
+error: Jul-13-2022 14:38:18: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:38:35: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:51:20: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:51:29: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:51:36: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:52:14: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:54:19: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id
+error: Jul-13-2022 14:55:38: 	(deletePhoto) Photo could not be deleted: Missing required parameter - public_id

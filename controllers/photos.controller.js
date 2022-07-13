@@ -100,7 +100,7 @@ exports.getAllPhotos = async (req, res) => {
 exports.deletePhoto = async (req, res) => {
   try {
     const photo = await Photo.findByPk(req.params.id);
-    await cloudinaryV2.uploader.destroy(photo.public_id);
+    await cloudinaryV2.uploader.destroy(photo.publicId);
     await photo.destroy();
 
     res.status(200).json({
