@@ -17,7 +17,7 @@ router
   .route("/")
   .get(getAllArticles)
   .post(verifyToken, createArticle)
-  .delete(verifyToken, deleteArticles);
+  .delete(verifyToken, verifyAdmin, deleteArticles);
 router.route('/published').get(getPublishedArticles)
 router.route("/slug/:slug").get(findArticleBySlug);
 router

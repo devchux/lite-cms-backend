@@ -84,7 +84,7 @@ exports.getAllMembers = async (req, res) => {
       include: User,
       limit,
       offset,
-      order: [['updatedAt', 'DESC']],
+      order: [["updatedAt", "DESC"]],
     });
 
     const data = getPagingData(users, page, limit);
@@ -135,6 +135,14 @@ exports.updateMember = async (req, res) => {
         status: "error",
         message: "User was not found",
       });
+    if (member.UserId !== req.user.userId) {
+      if (req.user.role !== "admin") {
+        return res.status(403).json({
+          status: "error",
+          message: "You are not authorized to perform this action",
+        });
+      }
+    }
     const user = await User.findOne({ where: { id: member.UserId } });
     user
       .update({
