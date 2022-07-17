@@ -22,7 +22,7 @@ router.route("/login").post(loginMember);
 
 router
   .route("/:id")
-  .put(updateMember)
+  .put(verifyToken, updateMember)
   .delete(verifyToken, verifyAdmin, deleteMember)
   .get(verifyToken, getSingleMember);
 
